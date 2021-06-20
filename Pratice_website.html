@@ -39,7 +39,7 @@
 
 
 					<h1>Brief</h1>
-<p> The aim of this project is to simplify and organise online orders for a pizza company </p>
+<p> The aim of this project is to simplify and organise phone orders for a pizza company </p>
 
 				<p>To start this project, I made a plan of what I needed, this includes but was not limited to
 				pizza price, lists and quiting the program. For this I also made a project backlog, this has all
@@ -47,97 +47,132 @@
 				idea. The focus of this method of structuring, is to break a large project into small manageble chunks
 				these are sprints, for this project these sprints will be about one to two lessons. </p>
 				<img class="img-responsive" src="assets/img/Plan.JPG" alt="">
+				<img class="img-responsive" src="assets/img/Backlog.PNG" alt="">
 					<hr>
 
     <!-- Heading levels -->
     <h1>Version One</h1>
-<h2> Backlog plan </h2>
-<img class="img-responsive" src="backlog.PNG" alt="">
+<h2> <h2>
 <h2> Sprint One Plan </h2>
-<img class="img-responsive" src="sprint_1.PNG" alt="">
+<img class="img-responsive" src="assets/img/sprint_1.PNG" alt="">
 <h2> This is my Code for Sprint 1</h2>
 <pre style="font-size: 1.5em;">
 <code class="Python">
 
-def double_loop_print(L):
-	for i in range(0, len(L)):
-		output = "{} : {}".format(L[i][0], L[i][1])
-		print(output)
 
-def main():
-	my_L = [
-		["Bananas", 6],
-		["Oranges", 2],
-		["Apples", 1],
-		["Kiwifruit", 4],
-		["Pears", 3]
-	]
-	double_loop_print(my_L)
+def print_with_indexes(L):
+    for i in range(0, len(L)):
+        output = "{}: {}: {} : {}".format( i,L[i][0],L[i][1], L[i][2])
+        print( output )
 
+run = True
+def main_loop():
+    run = True
+    my_L = [
+        ["Margarita", 18.5, 0],
+        ["Piccolo", 18.5, 0],
+        ["La Prima Donna", 25.5, 0],
+    ]
+    while run == True:
+        my_menu = """
+        Press
+        'q' to quit
+        'r' to review the see the menu
 
+        """
+        print(my_menu),
+        user_choice = input ("please enter your option here:    ")
+        if user_choice == "q":
+            print("Loop has stopped, Thank you")
+            run = False
+        elif user_choice == "r":
+            print_with_indexes(my_L)
+        else:
+            print ("sorry your answer was not valid")
 
-def indefinite_loop():
-	run = True
-	while run == True:
-		user_choice = input ("Press 'q' to stop the loop and 'r' to review the fruits")
-		if user_choice == "q":
-			print("Loop has stopped, Thank you")
-			run = False
-		elif user_choice == "r":
-			main()
-		else:
-			print ("sorry your answer was not valid")
+main_loop()
 
-
-
-indefinite_loop()
 </code>
 </pre>
-<p>This code above prints out the list when the user presses r and then also can qut the loop by pressing q, if they enter any other option a validation error</p>
-<p>Picture of spreadsheet as single table, first version</p>
- <p>Reflection (+ anything about relevant implications)</p>
-<hr>
-<h1>Version Two</h1>
-<p>Plan with data types and restrictions on data input</p>
-<p>Link to data base</p>
+<p>This code above prints out the list when the user presses r and then also can quit the loop by pressing q,
+	if they enter any other option a validation error. The aim of this code is establish the list, this list has
+three variables, one for price, another for name and the third for amount of pizzas. The quit is to exit the loop and prints
+a helpful message indicating this. The review option shows the list formatted for easier use. The list here only has
+three variables, this makes the code at the moment easier to follow. Latter I will expand this lists to 10 options.  </p>
 
-				<h2> Sprint Two Plan </h2>
-<img class="img-responsive" src="sprint_2.PNG" alt="">
+	<p>This version is currently functional and works just as expected, the validation despite being smaller works well
+	and means the code will not automatically crash. The plan for the next version is to add an amount to the pizzas,
+	to do this we need to know the indices. </p>
+<hr>
+
+<h2> Sprint Two Plan </h2>
+<img class="img-responsive" src="assets/img/sprint_2.PNG" alt="">
 
 <h2>Code</h2>
 <pre style="font-size: 1.5em;">
 <code class="Python">
 def print_with_indexes(L):
     for i in range(0, len(L)):
-        output = "{}: {}: {}".format( i,L[i][0],L[i][1])
+        output = "{}: {}: {} : {}".format( i,L[i][0],L[i][1], L[i][2])
         print( output )
 
-def add_fruit(L):
+def add_pizza(L):
     print_with_indexes(L)
-    my_index = int(input("Please select what index number, would you like to add fruit to?"))
-    new_amount = int(input("How many of the fruit do you want to add?"))
-    L[my_index][1] += new_amount
-    print_with_indexes(L)
+    my_index = int(input("Please select what index number, would you like to add pizza to?   "))
+    new_amount = int(input("How many of the pizza do you want to add?     "))
+    if new_amount <= 5:
+        L[my_index][2] += new_amount
+        print_with_indexes(L)
+    else:
+        output = "Sorry your number is above 5, the max number of one type of pizza is 5"
+        print (output)
 
-def subtract_fruit(L):
-    print_with_indexes(L)
-    my_index = int(input("Please select what index number, would you like to subtract fruit to?"))
-    new_amount = int(input("How many of the fruit do you want to subtract?"))
-    L[my_index][1] -= new_amount
-    print_with_indexes(L)
+
+run = True
+def main_loop():
+    run = True
+    my_L = [
+        ["Margarita", 18.5, 0],
+        ["Piccolo", 18.5, 0],
+        ["La Prima Donna", 25.5, 0],
+    ]
+    while run == True:
+        my_menu = """
+        Press
+        'q' to quit
+        'r' to review the see the menu
+        'a' to add pizzas to the order
+
+        """
+        print(my_menu),
+        user_choice = input ("please enter your option here:    ")
+        if user_choice == "q":
+            print("Loop has stopped, Thank you")
+            run = False
+        elif user_choice == "r":
+            print_with_indexes(my_L)
+        elif user_choice == "a":
+            add_pizza(my_L)
+        else:
+            print ("sorry your answer was not valid")
+
+main_loop()
 </code>
 </pre>
-<h2>Photos of the working code</h2>
-<img src="add.PNG" alt="">
-<img src="subtract.PNG" alt="">
+<h2>Photos of the working code</h2
 				<p></p>
 <h2>Reflection</h2>
- <p>In this version you can now add fruits, this allows the user to be interactive with the system. To add fruit you need to know the index number,
+ <p>In this version you can now add pizzas, this allows the user to be interactive with the system. To add pizzas you need to know the index number,
 	 this is done through a simple code that gets referenced multiple times. The one issue I had here was accessing my files,
- this was easily fixed through some re-organisation. The next step her was to subtract fruit from the bowl, this was very similar
- to adding fruit, which was also controlled by the indexes. To accommodate for the addition of more options I created a simple menu to
- navigate the various options. Fo the next version I would like to add fruit that aren't on the list all ready as this is a major problem
- with my code currently. </p>
+ this was easily fixed through some re-organisation. This code is controlled by the indexes, the user enters which indices they
+	 want to access, then adds the amount to the list.
+</p>
+	<p>
+	 This is all functional, to do this I added some basic validation. The company asked that there would be a max of pizzas
+	 per type. If they return more than 5 pizzas the program sends an error message and doesn't add the amount. The next
+ level with this validation is to add a different error message if the user enters a string instead of an integer.
+
+ </p>
 <hr>
 <h1>Version Three</h1>
 <p>Plan with data types and restrictions on data input</p>
