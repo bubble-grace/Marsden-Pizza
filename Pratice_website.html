@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Please put a title in</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="Description" lang="en" content="ADD SITE DESCRIPTION">
+		<meta name="author" content="ADD AUTHOR INFORMATION">
+		<meta name="robots" content="index, follow">
+
+		<!-- icons -->
+		<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+		<link rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" href="assets/highlight/styles/tomorrow.css">
+<script src="assets/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+		<!-- Override CSS file - add your own CSS rules -->
+		<link rel="stylesheet" href="assets/css/styles.css">
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="header">
+				<h1 class="header-heading">Grace's Pizzas</h1>
+			</div>
+			<div class="nav-bar">
+				<ul class="nav">
+					<li><a href="#">Nav item 1</a></li>
+					<li><a href="#">Nav item 2</a></li>
+					<li><a href="#">Nav item 3</a></li>
+				</ul>
+			</div>
+			<div class="content">
+
+
+
+
+
+					<h1>Brief</h1>
+<p> The aim of this project is to simplify and organise online orders for a pizza company </p>
+
+				<p>To start this project, I made a plan of what I needed, this includes but was not limited to
+				pizza price, lists and quiting the program. For this I also made a project backlog, this has all
+				the information stored in one place, from this I will make multiple sprints approximity one for each
+				idea. The focus of this method of structuring, is to break a large project into small manageble chunks
+				these are sprints, for this project these sprints will be about one to two lessons. </p>
+				<img class="img-responsive" src="assets/img/Plan.JPG" alt="">
+					<hr>
+
+    <!-- Heading levels -->
+    <h1>Version One</h1>
+<h2> Backlog plan </h2>
+<img class="img-responsive" src="backlog.PNG" alt="">
+<h2> Sprint One Plan </h2>
+<img class="img-responsive" src="sprint_1.PNG" alt="">
+<h2> This is my Code for Sprint 1</h2>
+<pre style="font-size: 1.5em;">
+<code class="Python">
+
+def double_loop_print(L):
+	for i in range(0, len(L)):
+		output = "{} : {}".format(L[i][0], L[i][1])
+		print(output)
+
+def main():
+	my_L = [
+		["Bananas", 6],
+		["Oranges", 2],
+		["Apples", 1],
+		["Kiwifruit", 4],
+		["Pears", 3]
+	]
+	double_loop_print(my_L)
+
+
+
+def indefinite_loop():
+	run = True
+	while run == True:
+		user_choice = input ("Press 'q' to stop the loop and 'r' to review the fruits")
+		if user_choice == "q":
+			print("Loop has stopped, Thank you")
+			run = False
+		elif user_choice == "r":
+			main()
+		else:
+			print ("sorry your answer was not valid")
+
+
+
+indefinite_loop()
+</code>
+</pre>
+<p>This code above prints out the list when the user presses r and then also can qut the loop by pressing q, if they enter any other option a validation error</p>
+<p>Picture of spreadsheet as single table, first version</p>
+ <p>Reflection (+ anything about relevant implications)</p>
+<hr>
+<h1>Version Two</h1>
+<p>Plan with data types and restrictions on data input</p>
+<p>Link to data base</p>
+
+				<h2> Sprint Two Plan </h2>
+<img class="img-responsive" src="sprint_2.PNG" alt="">
+
+<h2>Code</h2>
+<pre style="font-size: 1.5em;">
+<code class="Python">
+def print_with_indexes(L):
+    for i in range(0, len(L)):
+        output = "{}: {}: {}".format( i,L[i][0],L[i][1])
+        print( output )
+
+def add_fruit(L):
+    print_with_indexes(L)
+    my_index = int(input("Please select what index number, would you like to add fruit to?"))
+    new_amount = int(input("How many of the fruit do you want to add?"))
+    L[my_index][1] += new_amount
+    print_with_indexes(L)
+
+def subtract_fruit(L):
+    print_with_indexes(L)
+    my_index = int(input("Please select what index number, would you like to subtract fruit to?"))
+    new_amount = int(input("How many of the fruit do you want to subtract?"))
+    L[my_index][1] -= new_amount
+    print_with_indexes(L)
+</code>
+</pre>
+<h2>Photos of the working code</h2>
+<img src="add.PNG" alt="">
+<img src="subtract.PNG" alt="">
+				<p></p>
+<h2>Reflection</h2>
+ <p>In this version you can now add fruits, this allows the user to be interactive with the system. To add fruit you need to know the index number,
+	 this is done through a simple code that gets referenced multiple times. The one issue I had here was accessing my files,
+ this was easily fixed through some re-organisation. The next step her was to subtract fruit from the bowl, this was very similar
+ to adding fruit, which was also controlled by the indexes. To accommodate for the addition of more options I created a simple menu to
+ navigate the various options. Fo the next version I would like to add fruit that aren't on the list all ready as this is a major problem
+ with my code currently. </p>
+<hr>
+<h1>Version Three</h1>
+<p>Plan with data types and restrictions on data input</p>
+				<h2> Sprint Three Plan </h2>
+<img class="img-responsive" src="sprint_3.PNG" alt="">
+<h2>Code</h2>
+<pre style="font-size: 1.5em;">
+<code class="Python">
+def add_new_fruit (L):
+    fruit = input("What the fruit? ")
+    amount = int(input("How many of the fruit do you have? "))
+    new_list = [fruit, amount]
+    L.append(new_list)
+    print_with_indexes(L)
+
+def make_shopping_list(L):
+    for i in range(0, len(L)):
+        if L[i][1] <= 2:
+            print("{}".format(L[i][0]))
+</code>
+</pre>
+
+				<h2>These are a few photos of the working code</h2>
+               <img src="new_fruit.PNG" alt="">
+               <img src="shop.PNG" alt="">
+
+<h2>Reflection</h2>
+ <p>In this version I added an option to add new fruits not on the list, this is done through an append statement, this allows the
+ user to not only add new fruit but also the amount of this fruit they have brought. Another feature I added in this version is to be able
+ to have a shopping list function, this is when selected if any fruits are below 2 items, print a handy list. To me this function would
+ be very useful, you don't need to go a check on what fruits you have as the code does this for you. I also believe that the cap of 2 fruits,
+ is beneficial because it is lacking enough fruit to need more without having a surplus or shortage. </p>
+<hr>
+<h1> Relevant Implications Summary</h1>
+ <hr>
+ <hr>
+
+				<h1>Sprint 4</h1>
+				 <img class="img-responsive" src="fix.JPG" alt="">
+				<h2> Sprint Four Plan </h2>
+<img class="img-responsive" src="sprint_4.PNG" alt="">
+
+
+
+    <!-- Paragraphs -->
+    <h3>Example of formatted code</h3>
+
+
+
+
+<pre style="font-size: 1.5em;">
+<code class="Python">
+# interesting comment
+def review_fruit(l):
+    for x in l:
+        output = "{:&le; 10} -- {: &gt;4}".format(x[0], x[1])
+        print(output)
+    return None
+</code>
+</pre>
+
+  <h3>Table in case you need</h3>
+<table class="my-table"><tr><th>Tracks</th><th>Album</th><th>Artist</th></tr><tr><td>Rosalyn</td><td>Night moves</td><td>Bob Seger</td></tr><tr><td>Rock n' Roll Music</td><td>Rock n' Roll Music</td><td>The Beatles</td></tr><tr><td>Roll Over Beethoven</td><td>Rock n' Roll Music</td><td>The Beatles</td></tr><tr><td>Right Down The Lane</td><td>City to City</td><td>Gerry Rafferty</td></tr><tr><td>Ramblin Man</td><td>Brothers and Sister</td><td>The Allman Brothers Band</td></tr><tr><td>Rocket Man (I think it's going to be a long, long time)</td><td>Honky Chateau</td><td>Elton John</td></tr></table>
+
+            <hr>
+
+                <h3>Example paragraph</h3>
+					<p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+					<hr>
+
+					<!-- Responsive images -->
+					<h3>Example image placements</h3>
+					<p>For images to be responsive (so that they will rescale to suit the width of the parent, use the <code>.img-responsive</code> class.</p>
+					<img class="img-responsive" src="assets/img/place_holder.png" alt="">
+                <hr>
+                <div class="col-container">
+                <div class="col">
+               <img class="img-responsive" src="assets/img/place_holder_sm.jpg" alt="">
+                <p>Ut wisi enim ad minim veniam, <a href="#">quis nostrud exerci tation ullamcorper</a> suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel.</p>
+                </div>
+                 <div class="col">
+                <img class="img-responsive" src="assets/img/place_holder_sm.jpg" alt="">
+                <p>Ut wisi enim ad minim veniam, <a href="#">quis nostrud exerci tation ullamcorper</a> suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel.</p>
+                </div>
+                </div>
+                <hr>
+
+
+
+					<!-- Lists -->
+					<h3>Unordered list</h3>
+					<p>Unordered lists are used to markup lists where list items do not require numbering.</p>
+					<ul>
+						<li>Ut wisi enim ad minim veniam</li>
+						<li>Quis nostrud exerci tation</li>
+						<li>Lamcorper suscipit lobortis nis</li>
+						<li>Ut aliquip ex ea commodo consequat</li>
+						<li>Duis autem vel eum iriure dolor</li>
+					</ul>
+					<hr>
+
+					<h3>Ordered list</h3>
+					<p>Ordered lists are used to markup lists where list items require numbering.</p>
+					<ol>
+						<li>Hendrerit in vulputate velit esse</li>
+						<li>Olestie consequat</li>
+						<li>Vel illum dolore eu feugiat</li>
+						<li>Nulla facilisis at vero eros</li>
+						<li>Accumsan et iusto odio</li>
+					</ol>
+					<hr>
+
+					<h3>Unstyled list</h3>
+					<p>You can make the list unstyled using the <code>list-unstyled</code> class.</p>
+					<ul class="list-unstyled">
+						<li>Ut wisi enim ad minim veniam</li>
+						<li>Quis nostrud exerci tation</li>
+						<li>Lamcorper suscipit lobortis nis</li>
+						<li>Ut aliquip ex ea commodo consequat</li>
+						<li>Duis autem vel eum iriure dolor</li>
+					</ul>
+					<hr>
+
+					<h3>Inline list</h3>
+					<p>You can make the list display inline using the <code>list-inline</code> class.</p>
+					<ul class="list-inline">
+						<li>One</li>
+						<li>Two</li>
+						<li>Three</li>
+						<li>Four</li>
+					</ul>
+					<hr>
+
+
+
+					<h3>Buttons</h3>
+					<p>You can apply the <code>btn</code> class to any element that requires a button style.</p>
+					<p><a href="#" class="btn">Submit</a></p>
+					<hr>
+
+
+
+
+
+
+
+			</div>
+			<div class="footer">
+				&copy; Copyright 2015
+			</div>
+		</div>
+	</body>
+</html>

@@ -9,16 +9,17 @@ def main_loop():
     my_L = [
         ["Margarita", 18.5],
         ["Piccolo", 18.5],
-        ["La Prima Donna", 22.5],
+        ["La Prima Donna", 25.5],
     ]
     while run == True:
-        user_choice = input ("""
+        my_menu = """
         Press 
         'q' to quit
         'r' to review the see the menu
-        
-        please enter your option here:     
-        """)
+     
+        """
+        print(my_menu),
+        user_choice = input ("please enter your option here:    ")
         if user_choice == "q":
             print("Loop has stopped, Thank you")
             run = False
