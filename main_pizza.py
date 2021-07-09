@@ -1,3 +1,57 @@
+import re
+
+def delivery_option(D):
+    output = """
+    1: Delivery, this comes with an extra cost of $3 
+    2: Pick up, you come in store to pick up at no extra cost 
+
+    """
+    print(output)
+    choice = get_user_input(1, 2, "Which option would you like?  ")
+    if choice == 1:
+        address = check_varible(6, 50, "Where would you like your pizza/s delivered to?     ")
+        name = check_varible(2, 25, "Please enter your name:     ")
+        number = check_phone_number( "What is your phone number?   ")
+        print("Your pizza/s will be delivered to {}".format(address))
+        print("Your pizza/s are now under the name {}".format(name))
+        print("The phone number the pizza/s is associated with will be {}".format(number))
+        temp = [name, number, address]
+        D.append (temp)
+    elif choice == 2:
+        print("You have chosen pickup ")
+        name = check_varible(2, 25, "Please enter your name:     ")
+        number = check_phone_number( "What is your phone number?   ")
+        print("Your pizza/s are now under the name {}".format(name))
+        print("The phone number the pizza/s is associated with will be {}".format(number))
+        temp = [name, number]
+        D.append(temp)
+
+def check_phone_number(output):
+    getting_input = True
+    while getting_input == True:
+        try:
+            user_input = int(input(output))
+        except ValueError:
+            print("You have not entered an integer")
+            continue
+        getting_input = False
+    return user_input
+
+def check_varible (min, max, output):
+    get_name = True
+    while get_name == True:
+        name = input(output)
+        name = name.title()
+        if len(name) > max:
+            print('Sorry you have entered something with too many characters')
+            continue
+        elif len(name) < min:
+            print("Sorry you have enter something with to little characters")
+            continue
+
+        get_name = False
+
+    return name
 
 def print_reciept(C):
     print("----" * 10)
@@ -78,8 +132,10 @@ def main_loop():
         ["a", "to add pizzas to the order"],
         ["s", "to subtract a pizza/s"],
         ["r", "to see where the order is at"],
+        ["d", "to chose the method of receiving your pizzas"],
     ]
     customer_list =[]
+    customer_details =[]
     while run == True:
         for i in range(0, len(my_menu)):
             output = "{} : {}".format(my_menu[i][0], my_menu[i][1])
@@ -98,6 +154,8 @@ def main_loop():
             subtract_pizza(customer_list)
         elif user_choice == "r":
             print_reciept(customer_list)
+        elif user_choice == "d":
+            delivery_option(customer_details)
         else:
             print("sorry your answer was not valid")
             print("----" * 10)
