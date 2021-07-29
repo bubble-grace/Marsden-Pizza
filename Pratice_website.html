@@ -301,15 +301,13 @@ def check_varible (min, max, output):
     return name</code>
 </pre>
 
-<p>For this version I worked on creating a delivery option that allowed the user to choose either takeaway at no extra cost or delivery at a cost of three dollars. Both these options need more information about the user including but not limited to phone number, address and name. </p>
+<p>For this version I worked on creating a delivery option that allowed the user to choose either takeaway at no extra cost or delivery at a cost of three dollars. Both these options need more information about the user including but not limited to phone number, address and name. The name and address of the user was easy to validate with string validation. The hard part was the phone number for this I had two trial options, these had feature the same and different</p>
 
-<p>The name and address of the user was easy to validate with string validation. The hard part was the phone number for this I had two trial options, these had feature the same and different</p>
+<h3> Trial 1 </h3>
+<p>This trial was very simple and involved validating the length of the phone number with a len function. This ment the phone number had to be between 8 and 12 digits long as this was the minimum and maximum length a regional phone number could be according to Google. There was a few errors when testing this code including that if the phone number started with a 0, the code would drop it, because it was looking for the simplest form of the “number”. This could lead to many problems in the future.</p>
 
-<p> Trial 1
-This trial was very simple and involved validating the length of the phone number with a len function. This ment the phone number had to be between 8 and 12 digits long as this was the minimum and maximum length a regional phone number could be according to Google. There was a few errors when testing this code including that if the phone number started with a 0, the code would drop it, because it was looking for the simplest form of the “number”. This could lead to many problems in the future.</p>
-
-<p> Trial 2
-This trial was one including regex, that needed to be imported. This is shown by the import re code at the top of the page. This imports a package from python that does not need to be downloaded.
+<h3> Trial 2</h3>
+<p>This trial was one including regex, that needed to be imported. This is shown by the import re code at the top of the page. This imports a package from python that does not need to be downloaded.
 
 The function I wanted to run this code through was this:
 (^\([0][3]\))(\d{7}$)|(^\([0][4]\))(\d{7}$)|(^\([0][6]\))(\d{7}$)|(^\([0][7]\))(\d{7}$)|(^\([0][9]\))(\d{7}$)|(^\([0][2][1]\))(\d{6,8}$)|(^\([0][2][2]\))(\d{6,8}$)|(^\([0][2][7]\))(\d{6,8}$)|(^\([0][2][9]\))(\d{6,8}$)|([0][8][0][0])([\s])(\d{5,8}$)
@@ -317,7 +315,7 @@ The function I wanted to run this code through was this:
 
 This looks very confusing however it all makes sense, to start with I wanted to work  out what type of phone numbers people could have and I ended up with this list for New Zealand.
 
-<h2> Landline phone numbers with area codes </h2>
+<h4> Landline phone numbers with area codes </h4>
 <ul class="list-inline">
 	<li>03</li>
 <li>04</li>
@@ -326,7 +324,7 @@ This looks very confusing however it all makes sense, to start with I wanted to 
 <li>09</li>
 </ul>
 
-<h2> Mobile phone numbers with the suffix </h2>
+<h4> Mobile phone numbers with the prefix </h4>
 <ul class="list-inline">
 	<li>021</li>
 <li>022</li>
@@ -343,13 +341,15 @@ This looks very confusing however it all makes sense, to start with I wanted to 
 
 <p> The (^\([0][3]\))(\d{7}$)|(^\([0][4]))(\d{7}$)|(^\([0][7]\))(\d{7}$)|(^\([0][9]\))(\d{7}$)
  part of the code above is for the landline numbers, this requires that the prefix 0 then either 3,4,6,7 or 9 be in a bracket followed by 7 digits. </p>
+<h4>Regex Evaluation</h4>
 
-
-<p> By using this code I learnt a lot about regex and how it works, which allowed me to make this code, this became function through using a if statement with a search function that returned an error if none of these condition where meet
-
+    <p> By using this code I learnt a lot about regex and how it works, which allowed me to make this code, this became a function through using a if statement with a search function that returned an error if none of these conditions were met. Regex is the search used for validation, in this case for a pattern between the phone number and a viable NZ phone number.</p>
+    <h4>Trial Evaluation</h4>
 <p>After a lot of reach I decided that option two was  viable for the project I was doing. This is because it would accept the number for having the leading zero and provide a more in depth understanding of the code and what errors the number could have. To fully implement this from a trial basis I would need to fully explain to the user what format their answer needed to be in.</p>
 
+<h2>Evaluation</h2>
 
+    <p>This version is now functional with the addition of regex. This code now all works, this now I believe collects all the necessary information about the person ordering and their order as in the amount of pizzas they want. The next version will be the final version and this will be to confirm all the order details including delivery, the cost and the amount of pizzas. The user will then confirm the order if the details are correct if not they can be changed. </p>
 
 <hr>
 <h1> Relevant Implications Summary</h1>

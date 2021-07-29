@@ -1,5 +1,56 @@
 import re
 
+
+def checking_everthing(D, C, T, run):
+    print_delivery(D)
+    if T == 3:
+        print("Sorry you have not ordered any pizzas")
+        run = True
+        return(run)
+    elif T == 0:
+        print("Sorry you have not ordered any pizzas")
+        run = True
+        return (run)
+    else:
+        print_reciept(C, T)
+
+    yn = get_single_input()
+    if yn == "yes":
+        print("Thank you all your details are sorted")
+    else:
+        run = True
+        return (run)
+
+def update_delivery(D):
+    print_delivery(D)
+    my_index = get_user_input(0, 2, "Chose index number your would like to change ? ")
+    if my_index == 0:
+        new_address = check_varible(6, 50, "Where would you like your pizza/s delivered to?     ")
+        old_address = D[my_index][1]
+        D[my_index][1] = new_address
+        print("The name {} has been changed to {}".format(old_address, new_address))
+        print_with_indexes(D)
+    elif my_index == 1:
+        new_name = check_varible(2, 25, "Please enter your name:     ")
+        old_name = D[my_index][1]
+        D[my_index][1] = new_name
+        print("The name {} has been changed to {}".format(old_name, new_name))
+        print_delivery(D)
+    elif my_index == 2:
+        new_number = check_phone_number("What is your phone number? Please format (021)035689 with the prefix or area code in the ()  ")
+        old_number = D[my_index][1]
+        D[my_index][1] = new_number
+        print("The name {} has been changed to {}".format(old_number, new_number))
+        print_delivery(D)
+
+    else:
+        print("Sorry you have not entered 0, 1 or 2")
+
+
+
+
+
+
 def delivery_option(D, total_amount):
     output = """
     1: Delivery, this comes with an extra cost of $3 
@@ -11,22 +62,25 @@ def delivery_option(D, total_amount):
     if choice == 1:
         address = check_varible(6, 50, "Where would you like your pizza/s delivered to?     ")
         name = check_varible(2, 25, "Please enter your name:     ")
-        number = check_phone_number( "What is your phone number?   ")
+        number = check_phone_number( "What is your phone number? Please format (021)035689 with the prefix or area code in the ()  ")
         print("Your pizza/s will be delivered to {}".format(address))
         print("Your pizza/s are now under the name {}".format(name))
         print("The phone number the pizza/s is associated with will be {}".format(number))
-        temp = [name, number, address]
-        D.append(temp)
+        D.append(["address", address])
+        D.append(["name", name])
+        D.append(["phone number", number])
+        print("----" * 10)
         total_amount += 3
         return total_amount
     elif choice == 2:
         print("You have chosen pickup ")
         name = check_varible(2, 25, "Please enter your name:     ")
-        number = check_phone_number( "What is your phone number?   ")
+        number = check_phone_number( "What is your phone number? Please format (021)035689 with the prefix or area code in the ()  ")
         print("Your pizza/s are now under the name {}".format(name))
         print("The phone number the pizza/s is associated with will be {}".format(number))
-        temp = [name, number]
-        D.append(temp)
+        D.append(["name", name])
+        D.append(["phone number", number])
+        print("----" * 10)
     return D
 
 def check_phone_number(output):
@@ -41,9 +95,29 @@ def check_phone_number(output):
         else:
             print("Sorry your phone number was not at match")
             continue
-    return user_input
+        return user_input
 
 
+
+def get_single_input():
+   get_input = True
+   while get_input == True:
+       user_input = input("Please enter yes if the details are correct and no if they are not   ---->")
+       print (user_input)
+
+       if user_input not in ['yes', 'no']:
+           print ("You have not entered yes or no try again")
+           continue
+
+       get_input = False
+       return user_input
+
+def print_delivery(D):
+    print("----" * 10)
+    for i in range(0, len(D)):
+        output = "{:3} : {:10} : {:10}".format(i, D[i][0], D[i][1])
+        print(output)
+    print("----" * 10)
 
 def check_varible (min, max, output):
     get_name = True
@@ -58,8 +132,7 @@ def check_varible (min, max, output):
             continue
 
         get_name = False
-
-    return name
+        return name
 
 def print_reciept(C, total_amount):
     print("----" * 10)
@@ -123,8 +196,7 @@ def get_user_input (lower, higher, output):
             print("you have not entered a number between {} and {}".format(lower, higher))
             continue
         getting_input = False
-
-    return user_input
+        return user_input
 
 def main_loop():
     run = True
@@ -141,6 +213,7 @@ def main_loop():
         ["s", "to subtract a pizza/s"],
         ["r", "to see where the order is at"],
         ["d", "to chose the method of receiving your pizzas"],
+        ["u", "to update the customer details"],
         ["c", "to confirm the details of the order"],
     ]
     customer_list =[]
@@ -166,6 +239,10 @@ def main_loop():
             print_reciept(customer_list, total_amount)
         elif user_choice == "d":
             total_amount = delivery_option(customer_details, total_amount)
+        elif user_choice == "u":
+            update_delivery(customer_details)
+        elif user_choice == "c":
+            run = checking_everthing(customer_details,customer_list, total_amount, run)
         else:
             print("sorry your answer was not valid")
             print("----" * 10)
