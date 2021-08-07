@@ -100,9 +100,13 @@ three variables, one for price, another for name and the third for amount of piz
 a helpful message indicating this. The review option shows the list formatted for easier use. The list here only has
 three variables, this makes the code at the moment easier to follow. Latter I will expand this lists to 10 options.  </p>
 
-	<p>This version is currently functional and works just as expected, the validation despite being smaller works well
+	<p>This version is currently functional and works just as expected with the input you would exspect, the validation despite being smaller works well
 	and means the code will not automatically crash. The plan for the next version is to add an amount to the pizzas,
 	to do this we need to know the indices. </p>
+    <p></p>
+
+    <img class="img-responsive" src="assets/img/Test_1.PNG" alt="">
+    <p> Above is a photo of my tests </p>
 <hr>
 
 <h2> Sprint Two Plan </h2>
@@ -159,9 +163,9 @@ def main_loop():
 main_loop()
 </code>
 </pre>
-<h2>Photos of the working code</h2
+
 				<p></p>
-<h2>Reflection</h2>
+<h2>Description</h2>
  <p>In this version you can now add pizzas, this allows the user to be interactive with the system. To add pizzas you need to know the index number,
 	 this is done through a simple code that gets referenced multiple times. The one issue I had here was accessing my files,
  this was easily fixed through some re-organisation. This code is controlled by the indexes, the user enters which indices they
@@ -173,6 +177,16 @@ main_loop()
  level with this validation is to add a different error message if the user enters a string instead of an integer.
 
  </p>
+    <p></p>
+    <h2>Photos of the working code and Evaluation</h2>
+    <p></p>
+
+     <img class="img-responsive" src="assets/img/Test_2.PNG" alt="">
+    <p></p>
+    <p> Above is a photo of my tests for this version, the first part of the tests went well and performed as expected. However when I went to
+    test the adding function, this worked with the normal 0 to 2 indices. However when I went to try to put an indices of 3, the code chrashed.
+    This is an issue I would like to sort out for the next version with some validation, including an except errors part of the code.</p>
+
     <h2> Sprint Three Plan </h2>
 <img class="img-responsive" src="assets/img/sprint_3.PNG" alt="">
 
@@ -231,8 +245,12 @@ def print_reciept(C):
 However the new feature here is the addition of a print receipt function, this collects the list of the users order, this being the amount and type of pizzas ordered. This then goes to the calculator where the total is calculated. This is all printed in an easy to follow “receipt” format.
 
 </p>
+
+
+    <img class="img-responsive" src="assets/img/Test_3.PNG" alt="">
+
   <p>
-   This is all functional, to do this I added some basic validation. The user can only subtract up to the amount of pizzas they have ordered. This means there are no negative values of pizzas as this could run into issues further down the tract. Because there are now two functions that require validation, I have created a function for this, it collects the maximum and minimum number of pizzas to be added or subtracted and the message/ouput you would like the user to see.
+   This is all functional, to do this I added some basic validation. The user can only subtract up to the amount of pizzas they have ordered above is a photo before this code was implimented. This means there are no negative values of pizzas as this could run into issues further down the tract. Because there are now two functions that require validation, I have created a function for this, it collects the maximum and minimum number of pizzas to be added or subtracted and the message/ouput you would like the user to see.
 
 </p>
 
@@ -352,7 +370,20 @@ This looks very confusing however it all makes sense, to start with I wanted to 
     <p>This version is now functional with the addition of regex. This code now all works, this now I believe collects all the necessary information about the person ordering and their order as in the amount of pizzas they want. The next version will be the final version and this will be to confirm all the order details including delivery, the cost and the amount of pizzas. The user will then confirm the order if the details are correct if not they can be changed. </p>
 
 <hr>
-<h1> Relevant Implications Summary</h1>
+
+    <h1>Version 5 </h1>
+
+    <p> For version 5 the main goal was for the user to be able to confirm all the details including the amount of pizzas and the pickup/delivery information. For this code to work it was printing all the information collected for earlierly, however the user may not have ordered any pizzas or entered no delivery details. The code then gives an error message to the user and then returns to the main menu. </p>
+
+<p> When I was testing this code everything was functional however I noticed I often was typing too fast and made mistakes in the details for the delivery which was the name, phone number and address. To solve this problem I added a function which allowed the user to change or update any of these options. </p>
+
+    <img class="img-responsive" src="assets/img/sprint_5.PNG" alt="">
+<p> The second part of this sprint was to clean up the code by making sure the relevant code conventions were followed and there were minimal errors. This was done through the use of the feature on pycharm. </p>
+<p>When I was cleaning up my code, I discovered another issue I wanted to fix, this was regarding ordering pizzas. Currently if the user want to order more
+of a pizza they have already ordered, it lets them order up to five more. To fix this I added a function to check how many if any of the pizzas were already
+ordered then subtract this from the main pizza maxium amount. This allowed the user to enter up to 5 TOTAL pizzas instead of 5 per extra addition. </p>
+
+    <h1> Relevant Implications Summary</h1>
  <hr>
  <hr>
 
