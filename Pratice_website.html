@@ -27,9 +27,12 @@
 			</div>
 			<div class="nav-bar">
 				<ul class="nav">
-					<li><a href="#">Nav item 1</a></li>
-					<li><a href="#">Nav item 2</a></li>
-					<li><a href="#">Nav item 3</a></li>
+					<li><a href="#1">Sprint 1</a></li>
+					<li><a href="#2">Sprint 2</a></li>
+					<li><a href="#3">Sprint 3</a></li>
+                    <li><a href="#4">Sprint 4</a></li>
+					<li><a href="#5">Sprint 5</a></li>
+                    <li><a href="#5">Relevant Implications</a></li>
 				</ul>
 			</div>
 			<div class="content">
@@ -51,6 +54,7 @@
 					<hr>
 
     <!-- Heading levels -->
+                <div id="1">
     <h1>Version One</h1>
 <h2> <h2>
 <h2> Sprint One Plan </h2>
@@ -108,6 +112,8 @@ three variables, this makes the code at the moment easier to follow. Latter I wi
     <img class="img-responsive" src="assets/img/Test_1.PNG" alt="">
     <p> Above is a photo of my tests </p>
 <hr>
+                </div>
+                <div id="2">
 
 <h2> Sprint Two Plan </h2>
 <img class="img-responsive" src="assets/img/sprint_2.PNG" alt="">
@@ -186,7 +192,8 @@ main_loop()
     <p> Above is a photo of my tests for this version, the first part of the tests went well and performed as expected. However when I went to
     test the adding function, this worked with the normal 0 to 2 indices. However when I went to try to put an indices of 3, the code chrashed.
     This is an issue I would like to sort out for the next version with some validation, including an except errors part of the code.</p>
-
+                </div>
+                <div id="3">
     <h2> Sprint Three Plan </h2>
 <img class="img-responsive" src="assets/img/sprint_3.PNG" alt="">
 
@@ -253,7 +260,8 @@ However the new feature here is the addition of a print receipt function, this c
    This is all functional, to do this I added some basic validation. The user can only subtract up to the amount of pizzas they have ordered above is a photo before this code was implimented. This means there are no negative values of pizzas as this could run into issues further down the tract. Because there are now two functions that require validation, I have created a function for this, it collects the maximum and minimum number of pizzas to be added or subtracted and the message/ouput you would like the user to see.
 
 </p>
-
+                </div>
+<div id="4">
 
     <hr>
 <h1>Version Four</h1>
@@ -365,11 +373,17 @@ This looks very confusing however it all makes sense, to start with I wanted to 
     <h4>Trial Evaluation</h4>
 <p>After a lot of reach I decided that option two was  viable for the project I was doing. This is because it would accept the number for having the leading zero and provide a more in depth understanding of the code and what errors the number could have. To fully implement this from a trial basis I would need to fully explain to the user what format their answer needed to be in.</p>
 
-<h2>Evaluation</h2>
+<h2>Evaluation with photo of test</h2>
+
+
+    <img class="img-responsive" src="assets/img/test_4.PNG" alt="">
+
 
     <p>This version is now functional with the addition of regex. This code now all works, this now I believe collects all the necessary information about the person ordering and their order as in the amount of pizzas they want. The next version will be the final version and this will be to confirm all the order details including delivery, the cost and the amount of pizzas. The user will then confirm the order if the details are correct if not they can be changed. </p>
 
 <hr>
+</div>
+                <div id="5">
 
     <h1>Version 5 </h1>
 
@@ -383,7 +397,32 @@ This looks very confusing however it all makes sense, to start with I wanted to 
 of a pizza they have already ordered, it lets them order up to five more. To fix this I added a function to check how many if any of the pizzas were already
 ordered then subtract this from the main pizza maxium amount. This allowed the user to enter up to 5 TOTAL pizzas instead of 5 per extra addition. </p>
 
+
+</div>
+                <p>Add video here</p>
+
+                <p>From this video I discovered one last problem, if the user has subtracted pizzas even if it is at 0 the customer list
+                keeps the variable. Hence I have added a small piece of code that if the pizzas on the list equals zero the code will
+                delete the order from the costumers list. </p>
+                <div id="6">
+
     <h1> Relevant Implications Summary</h1>
+
+    <h3>Usability </h3>
+
+<p>I believe that my code is easily usable, this is because the questions and feedback were polite and well-meant. I tried to include please and thank you, and other supportive messages. This is shown in my validation and myl message includes supportive phrases to keep the user updated. </p>
+
+<h3>Functionality</h3>
+
+<p>In order to test the functionality of my code, I got others to test my code as seen in the video above. Despite the users changing it’s mind and making sessions that might not always be what was expected. This all worked without crashing, only calmy displaying the user with an error message that was targeted and helpful. </p>
+
+<h3>Sustainability</h3>
+
+<p>This was a big thing for me as this helped me to make decisions regarding lists and how to use them. In the first 5 sprints I only had a pizza list of three pizzas, this was because it was easier to manage in the early stages. However for the final version I changed this to a list of 10 pizzas for Marsden Pizza’s menu. This showed the ability for the code to be changed  if needed, this is a great example of sustainability, and future proofing methods. The pizza list was not the only list I used, we also had delivery and customer order lists, these stored data, to then be used again and again. Another sustainability feature of this code is the functions, these validations functions are used multiple times one is for getting a string and the other is for getting a number. The only function used less than three times is getting the phone number because this is specialist code only used twice. If I had more time I would work out a way of integrating the phone number validation into the getting number function. </p>
+
+                </div>
+
+
  <hr>
  <hr>
 
@@ -391,7 +430,7 @@ ordered then subtract this from the main pizza maxium amount. This allowed the u
 
 			</div>
 			<div class="footer">
-				&copy; Copyright 2015
+				&copy; Copyright 2021 Grace Cinque
 			</div>
 		</div>
 	</body>

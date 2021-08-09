@@ -14,18 +14,26 @@ def checking_everything(d, c, total_amount):
         if c[i][2] == 0:
             print("Sorry you have not ordered any pizzas")
             run = True
-            return run
-        else:
-            if c[i][2] > 0:
-                print_receipt(c, total_amount)
-        print("----" * 10)
+            return run, total_amount
+    print_receipt(c, total_amount)
+    print("----" * 10)
 
-    yn = get_single_input()
+    yn = get_single_input("Please enter yes if the details are correct and no if they are not   ---->")
     if yn == "yes":
         print("Thank you all your details are sorted")
+        get = get_single_input("Would you like to start another order?")
+        if get == "yes":
+            c.clear()
+            d.clear()
+            total_amount = 0
+            run = True
+            return run, total_amount
+        else:
+            run = False
+            return run, total_amount
     else:
         run = True
-        return run
+        return run, total_amount
 
 
 def update_delivery(d):
@@ -109,10 +117,10 @@ def check_phone_number(output):
             continue
 
 
-def get_single_input():
+def get_single_input(output):
     get_input = True
     while get_input is True:
-        user_input = input("Please enter yes if the details are correct and no if they are not   ---->")
+        user_input = input(output)
         print(user_input)
 
         if user_input not in ['yes', 'no']:
@@ -154,10 +162,10 @@ def print_receipt(c, total_amount):
     print("----" * 10)
     for i in range(0, len(c)):
         if c[i][2] > 0:
-            output = "You have ordered {} {} pizza/s at ${} each".format(c[i][2], c[i][0], c[i][1])
+            output = "You have ordered {} {} pizza/s at ${:.2f} each".format(c[i][2], c[i][0], c[i][1])
             print(output)
     total_amount += total_calculator(c)
-    output2 = "This total is ${} ".format(total_amount)
+    output2 = "This total is ${:.2f} ".format(total_amount)
     print(output2)
     print("----" * 10)
     return None
@@ -273,6 +281,8 @@ def subtract_pizza(c, total_amount):
     sub_amount = get_user_input(0, c[my_index][2], "How many of the pizza do you want to subtract?     ")
     new_amount = c[my_index][2] - sub_amount
     c[my_index][2] = new_amount
+    if new_amount == 0:
+        c.pop(my_index)
     print_receipt(c, total_amount)
     return None
 
@@ -346,7 +356,7 @@ def main_loop():
         elif user_choice == "u":
             update_delivery(customer_details)
         elif user_choice == "c":
-            run = checking_everything(customer_details, customer_list, total_amount)
+            run, total_amount = checking_everything(customer_details, customer_list, total_amount)
         else:
             print("sorry your answer was not valid")
             print("----" * 10)
