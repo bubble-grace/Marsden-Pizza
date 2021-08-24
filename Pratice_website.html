@@ -55,56 +55,18 @@
 
     <!-- Heading levels -->
                 <div id="1">
-    <h1>Version One</h1>
-<h2> <h2>
-<h2> Sprint One Plan </h2>
+    <h1>Sprint One</h1>
+                </div>
+<p>The aim of this sprint is to create a loop with printing to menu and being able to quit/exit</p>
 <img class="img-responsive" src="assets/img/sprint_1.PNG" alt="">
-<h2> This is my Code for Sprint 1</h2>
-<pre style="font-size: 1.5em;">
-<code class="Python">
 
-
-def print_with_indexes(L):
-    for i in range(0, len(L)):
-        output = "{}: {}: {} : {}".format( i,L[i][0],L[i][1], L[i][2])
-        print( output )
-
-run = True
-def main_loop():
-    run = True
-    my_L = [
-        ["Margarita", 18.5, 0],
-        ["Piccolo", 18.5, 0],
-        ["La Prima Donna", 25.5, 0],
-    ]
-    while run == True:
-        my_menu = """
-        Press
-        'q' to quit
-        'r' to review the see the menu
-
-        """
-        print(my_menu),
-        user_choice = input ("please enter your option here:    ")
-        if user_choice == "q":
-            print("Loop has stopped, Thank you")
-            run = False
-        elif user_choice == "r":
-            print_with_indexes(my_L)
-        else:
-            print ("sorry your answer was not valid")
-
-main_loop()
-
-</code>
-</pre>
 <p>This code above prints out the list when the user presses r and then also can quit the loop by pressing q,
 	if they enter any other option a validation error. The aim of this code is establish the list, this list has
 three variables, one for price, another for name and the third for amount of pizzas. The quit is to exit the loop and prints
 a helpful message indicating this. The review option shows the list formatted for easier use. The list here only has
 three variables, this makes the code at the moment easier to follow. Latter I will expand this lists to 10 options.  </p>
 
-	<p>This version is currently functional and works just as expected with the input you would exspect, the validation despite being smaller works well
+	<p>This version is currently functional and works just as expected with the input you would expect, the validation despite being smaller works well
 	and means the code will not automatically crash. The plan for the next version is to add an amount to the pizzas,
 	to do this we need to know the indices. </p>
     <p></p>
@@ -116,59 +78,9 @@ three variables, this makes the code at the moment easier to follow. Latter I wi
                 <div id="2">
 
 <h2> Sprint Two Plan </h2>
+                    <p>My aim for this sprint is to add pizzas to the costumer order</p>
 <img class="img-responsive" src="assets/img/sprint_2.PNG" alt="">
 
-<h2>Code</h2>
-<pre style="font-size: 1.5em;">
-<code class="Python">
-def print_with_indexes(L):
-    for i in range(0, len(L)):
-        output = "{}: {}: {} : {}".format( i,L[i][0],L[i][1], L[i][2])
-        print( output )
-
-def add_pizza(L):
-    print_with_indexes(L)
-    my_index = int(input("Please select what index number, would you like to add pizza to?   "))
-    new_amount = int(input("How many of the pizza do you want to add?     "))
-    if new_amount <= 5:
-        L[my_index][2] += new_amount
-        print_with_indexes(L)
-    else:
-        output = "Sorry your number is above 5, the max number of one type of pizza is 5"
-        print (output)
-
-
-run = True
-def main_loop():
-    run = True
-    my_L = [
-        ["Margarita", 18.5, 0],
-        ["Piccolo", 18.5, 0],
-        ["La Prima Donna", 25.5, 0],
-    ]
-    while run == True:
-        my_menu = """
-        Press
-        'q' to quit
-        'r' to review the see the menu
-        'a' to add pizzas to the order
-
-        """
-        print(my_menu),
-        user_choice = input ("please enter your option here:    ")
-        if user_choice == "q":
-            print("Loop has stopped, Thank you")
-            run = False
-        elif user_choice == "r":
-            print_with_indexes(my_L)
-        elif user_choice == "a":
-            add_pizza(my_L)
-        else:
-            print ("sorry your answer was not valid")
-
-main_loop()
-</code>
-</pre>
 
 				<p></p>
 <h2>Description</h2>
@@ -194,55 +106,12 @@ main_loop()
     This is an issue I would like to sort out for the next version with some validation, including an except errors part of the code.</p>
                 </div>
                 <div id="3">
-    <h2> Sprint Three Plan </h2>
+    <h2> Sprint Three </h2>
+
+                    <p>The aim of this sprint is to have a functioning subtracting pizza option as well as being able to see a receipt </p>
 <img class="img-responsive" src="assets/img/sprint_3.PNG" alt="">
 
-<h2>Code</h2>
-<pre style="font-size: 1.5em;">
-<code class="Python">
-def subtract_pizza(C):
-    print_with_indexes_2(C)
-    my_index = get_user_input(0, len(C)-1, "Please select what index number, would you like to subtract pizza from?   ")
-    sub_amount = get_user_input(0, C[my_index][2], "How many of the pizza do you want to subtract?     ")
-    new_amount = C[my_index][2] - sub_amount
-    C[my_index][2] = new_amount
-    print_reciept(C)
 
-def get_user_input (lower, higher, output):
-    getting_input = True
-    while getting_input == True:
-        try:
-            user_input = int(input(output))
-        except ValueError:
-            print("You have not entered an integer")
-            continue
-        if user_input < lower or user_input > higher:
-            print("you have not entered a number between {} and {}".format(lower, higher))
-            continue
-        getting_input = False
-
-    return user_input
-
-def total_calculator(C):
-    total = 0
-    for i in range(0, len(C)):
-        sub = C[i][2] * C[i][1]
-        total += sub
-    return total
-
-def print_reciept(C):
-    print("----" * 10)
-    for i in range(0, len(C)):
-        if C[i][2] > 0:
-            output = "You have ordered {} {} pizza/s at ${} each".format(C[i][2], C[i][0],  C[i][1])
-            print(output)
-    amount = total_calculator(C)
-    output2 = "This total is ${} ". format(amount)
-    print(output2)
-    print("----" * 10)
-
-</code>
-</pre>
 <h2>Photos of the working code</h2
 				<p></p>
 <h2>Reflection</h2>
@@ -264,68 +133,10 @@ However the new feature here is the addition of a print receipt function, this c
 <div id="4">
 
     <hr>
-<h1>Version Four</h1>
-<p>Chose Delivery Option</p>
-				<h2> Sprint Four Plan </h2>
+<h1>Sprint Four</h1>
+<p>The aim of this sprint is to chose the delivery option</p>
 
 <img class="img-responsive" src="assets/img/sprint_4.PNG" alt="">
-<h2>Code</h2>
-<pre style="font-size: 1.5em;">
-<code class="Python">
-
-def delivery_option(D):
-    output = """
-    1: Delivery, this comes with an extra cost of $3
-    2: Pick up, you come in store to pick up at no extra cost
-
-    """
-    print(output)
-    choice = get_user_input(1, 2, "Which option would you like?  ")
-    if choice == 1:
-        address = check_varible(6, 50, "Where would you like your pizza/s delivered to?     ")
-        name = check_varible(2, 25, "Please enter your name:     ")
-        number = check_phone_number( "What is your phone number?   ")
-        print("Your pizza/s will be delivered to {}".format(address))
-        print("Your pizza/s are now under the name {}".format(name))
-        print("The phone number the pizza/s is associated with will be {}".format(number))
-        temp = [name, number, address]
-        D.append (temp)
-    elif choice == 2:
-        print("You have chosen pickup ")
-        name = check_varible(2, 25, "Please enter your name:     ")
-        number = check_phone_number( "What is your phone number?   ")
-        print("Your pizza/s are now under the name {}".format(name))
-        print("The phone number the pizza/s is associated with will be {}".format(number))
-        temp = [name, number]
-        D.append(temp)
-
-def check_phone_number(output):
-    getting_input = True
-    while getting_input == True:
-        try:
-            user_input = int(input(output))
-        except ValueError:
-            print("You have not entered an integer")
-            continue
-        getting_input = False
-    return user_input
-
-def check_varible (min, max, output):
-    get_name = True
-    while get_name == True:
-        name = input(output)
-        name = name.title()
-        if len(name) > max:
-            print('Sorry you have entered something with too many characters')
-            continue
-        elif len(name) < min:
-            print("Sorry you have enter something with to little characters")
-            continue
-
-        get_name = False
-
-    return name</code>
-</pre>
 
 <p>For this version I worked on creating a delivery option that allowed the user to choose either takeaway at no extra cost or delivery at a cost of three dollars. Both these options need more information about the user including but not limited to phone number, address and name. The name and address of the user was easy to validate with string validation. The hard part was the phone number for this I had two trial options, these had feature the same and different</p>
 
@@ -385,7 +196,7 @@ This looks very confusing however it all makes sense, to start with I wanted to 
 </div>
                 <div id="5">
 
-    <h1>Version 5 </h1>
+    <h1>Sprint 5 </h1>
 
     <p> For version 5 the main goal was for the user to be able to confirm all the details including the amount of pizzas and the pickup/delivery information. For this code to work it was printing all the information collected for earlierly, however the user may not have ordered any pizzas or entered no delivery details. The code then gives an error message to the user and then returns to the main menu. </p>
 
@@ -399,30 +210,56 @@ ordered then subtract this from the main pizza maxium amount. This allowed the u
 
 
 </div>
-                <p>Add video here</p>
-
+                <video width="1060" height="720" controls>
+  <source src="Trial 1.mp4" type="video/mp4">
+                </video>
+<p></p>
                 <p>From this video I discovered one last problem, if the user has subtracted pizzas even if it is at 0 the customer list
                 keeps the variable. Hence I have added a small piece of code that if the pizzas on the list equals zero the code will
                 delete the order from the costumers list. </p>
                 <div id="6">
 
     <h1> Relevant Implications Summary</h1>
+<h3>Usability </h3>
 
-    <h3>Usability </h3>
+<p> Usability is how easy the program is to use, this is done by clear informative user feedback or even fixes the error without the user knowing to make the experience more enjoyable. Uses consistent messaging and navigation system, is another part of usability. </p>
 
 <p>I believe that my code is easily usable, this is because the questions and feedback were polite and well-meant. I tried to include please and thank you, and other supportive messages. This is shown in my validation and myl message includes supportive phrases to keep the user updated. </p>
 
 <h3>Functionality</h3>
 
+<p> Functionality is that the program works properly this includes not crashing despite the users interesting inputs. It also needs to meet the users requirements of being able to add and subtract pizzas. </p>
+
 <p>In order to test the functionality of my code, I got others to test my code as seen in the video above. Despite the users changing it’s mind and making sessions that might not always be what was expected. This all worked without crashing, only calmy displaying the user with an error message that was targeted and helpful. </p>
 
-<h3>Sustainability</h3>
+<h3>Sustainability and Future Proofing</h3>
+
+<p>Future proofing and sustainability is the task of ensuring the code can be used by future generations, through easy update options, adding new features, and another developer can work on with ease. </p>
+
+<p>Code commenting and doctyping to make it easy to follow and understand with basic code knowledge. The code starts from a main function and this allows another developer to work on with minimal distress.</p>
+
+<p>Function based build which means  each feature runs from a function. Any new feature could be created with a new function and a new menu option to complete the code. </p>
 
 <p>This was a big thing for me as this helped me to make decisions regarding lists and how to use them. In the first 5 sprints I only had a pizza list of three pizzas, this was because it was easier to manage in the early stages. However for the final version I changed this to a list of 10 pizzas for Marsden Pizza’s menu. This showed the ability for the code to be changed  if needed, this is a great example of sustainability, and future proofing methods. The pizza list was not the only list I used, we also had delivery and customer order lists, these stored data, to then be used again and again. Another sustainability feature of this code is the functions, these validations functions are used multiple times one is for getting a string and the other is for getting a number. The only function used less than three times is getting the phone number because this is specialist code only used twice. If I had more time I would work out a way of integrating the phone number validation into the getting number function. </p>
 
-                </div>
 
 
+<h3>What have I learnt from this planning process?</h3>
+
+<p>I have learnt about structuring the planning into manageable chunks, this made hard ideas much simpler and easier to follow. Each Sprint took about a week and focused on one or two main ideas. This started from the most basic code that could be needed, and added a new function that I discovered I could need.<p/>
+
+<p>These Sprints were very achievable and allowed me to feel a sense of accomplishment on completing each one. </p>
+
+<h3>GitHub </h3>
+
+<p>I used github as a control center for all my code and sprints. The dashboard helped me to structure and keep track of my ideas. With the doing, to do and done column for each sprint. This was also where I stored the project backlog, an ever updating file with what was happening and what had the highest priority and what was next in the big scheme. </p>
+
+<p>I would also push all my code to github, this allowed me to have only one version of the code on my computer, with the other sprint codes being stored in github. This also records the date and time of each sprint, with relevant comments from myself. As seen below</p>
+
+
+
+
+<img class="img-responsive" src="assets/img/commits_dates.PNG" alt="">
  <hr>
  <hr>
 

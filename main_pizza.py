@@ -1,13 +1,15 @@
+"""A pizza order program to store information."""
+
 import re
 
 
 def checking_everything(d, c, total_amount):
-    """ Invoicing the customer with details
+    """Invoicing the customer with details.
 
     :param d: list
     :param c: list
     :param total_amount:
-    :return:
+    :return: boolean, integer
     """
     print_delivery(d)
     for i in range(0, len(c)):
@@ -17,8 +19,9 @@ def checking_everything(d, c, total_amount):
             return run, total_amount
     print_receipt(c, total_amount)
     print("----" * 10)
-
-    yn = get_single_input("Please enter yes if the details are correct and no if they are not   ---->")
+    output = "Please enter yes if the details" \
+             " are correct and no if they are not---->"
+    yn = get_single_input(output)
     if yn == "yes":
         print("Thank you all your details are sorted")
         get = get_single_input("Would you like to start another order?")
@@ -37,13 +40,21 @@ def checking_everything(d, c, total_amount):
 
 
 def update_delivery(d):
+    """Change delivery information.
+
+    :param d: list
+    :return: None
+    """
     print_delivery(d)
-    my_index = get_user_input(0, 2, "Chose index number your would like to change ? ")
+    output = "Chose index number your would like to change ? "
+    my_index = get_user_input(0, 2, output)
     if my_index == 0:
-        new_address = check_variable(6, 50, "Where would you like your pizza/s delivered to?     ")
+        output2 = "Where would you like your pizza/s delivered to?     "
+        new_address = check_variable(6, 50, output2)
         old_address = d[my_index][1]
         d[my_index][1] = new_address
-        print("The name {} has been changed to {}".format(old_address, new_address))
+        print("The name {} has been changed to {}"
+              .format(old_address, new_address))
         print_with_indexes(d)
     elif my_index == 1:
         new_name = check_variable(2, 25, "Please enter your name:     ")
@@ -52,11 +63,13 @@ def update_delivery(d):
         print("The name {} has been changed to {}".format(old_name, new_name))
         print_delivery(d)
     elif my_index == 2:
-        output = "What is your phone number? Please format (021)035689 with the prefix or area code in the ()"
+        output = "What is your phone number? Please format " \
+                 "(021)035689 with the prefix or area code in the ()"
         new_number = check_phone_number(output)
         old_number = d[my_index][1]
         d[my_index][1] = new_number
-        print("The name {} has been changed to {}".format(old_number, new_number))
+        print("The name {} has been changed to {}"
+              .format(old_number, new_number))
         print_delivery(d)
 
     else:
@@ -64,21 +77,30 @@ def update_delivery(d):
 
 
 def delivery_option(d, total_amount):
+    """Asking the user fro details surrounding delivery.
+
+    :param d: list
+    :param total_amount: integer
+    :return: None
+    """
     output = """
-    1: Delivery, this comes with an extra cost of $3 
-    2: Pick up, you come in store to pick up at no extra cost 
+    1: Delivery, this comes with an extra cost of $3
+    2: Pick up, you come in store to pick up at no extra cost
 
     """
     print(output)
     choice = get_user_input(1, 2, "Which option would you like?  ")
     if choice == 1:
-        address = check_variable(6, 50, "Where would you like your pizza/s delivered to?     ")
+        output = "Where would you like your pizza/s delivered to?     "
+        address = check_variable(6, 50, output)
         name = check_variable(2, 25, "Please enter your name:     ")
-        output = "What is your phone number? Please format (021)035689 with the prefix or area code in the ()  "
+        output = "What is your phone number? Please format (021)035689 " \
+                 "with the prefix or area code in the ()  "
         number = check_phone_number(output)
         print("Your pizza/s will be delivered to {}".format(address))
         print("Your pizza/s are now under the name {}".format(name))
-        print("The phone number the pizza/s is associated with will be {}".format(number))
+        print("The phone number the pizza/s is "
+              "associated with will be {}".format(number))
         d.append(["address", address])
         d.append(["name", name])
         d.append(["phone number", number])
@@ -88,11 +110,14 @@ def delivery_option(d, total_amount):
     elif choice == 2:
         print("You have chosen pickup ")
         name = check_variable(2, 25, "Please enter your name:     ")
-        output = "Please format (021)035689 with the prefix or area code in the ()  "
+        output = "Please format (021)035689 with " \
+                 "the prefix or area code in the ()  "
         print(output)
         number = check_phone_number("What is your phone number?")
-        print("Your pizza/s are now under the name {}".format(name))
-        print("The phone number the pizza/s is associated with will be {}".format(number))
+        print("Your pizza/s are now "
+              "under the name {}".format(name))
+        print("The phone number the pizza/s is "
+              "associated with will be {}".format(number))
         d.append(["name", name])
         d.append(["phone number", number])
         print("----" * 10)
@@ -100,15 +125,20 @@ def delivery_option(d, total_amount):
 
 
 def check_phone_number(output):
+    """Search through list.
+
+    :param output: string
+    :return: integer
+    """
     getting_input = True
     while getting_input is True:
         user_input = (input(output))
         x = re.search(
-            "(^\([0][3]\))(\d{7}$)|(^\([0][4]\))(\d{7}$)|"
-            "(^\([0][6]\))(\d{7}$)|(^\([0][7]\))(\d{7}$)|"
-            "(^\([0][9]\))(\d{7}$)|(^\([0][2][1]\))(\d{6,8}$)|"
-            "(^\([0][2][2]\))(\d{6,8}$)|(^\([0][2][7]\))(\d{6,8}$)|"
-            "(^\([0][2][9]\))(\d{6,8}$)|([0][8][0][0])([\s])(\d{5,8}$)",
+            "(^\\([0][3]\\))(\\d{7}$)|(^\\([0][4]\\))(\\d{7}$)|"
+            "(^\\([0][6]\\))(\\d{7}$)|(^\\([0][7]\\))(\\d{7}$)|"
+            "(^\\([0][9]\\))(\\d{7}$)|(^\\([0][2][1]\\))(\\d{6,8}$)|"
+            "(^\\([0][2][2]\\))(\\d{6,8}$)|(^\\([0][2][7]\\))(\\d{6,8}$)|"
+            "(^\\([0][2][9]\\))(\\d{6,8}$)|([0][8][0][0])([\\s])(\\d{5,8}$)",
             user_input)
         if x:
             return user_input
@@ -118,6 +148,11 @@ def check_phone_number(output):
 
 
 def get_single_input(output):
+    """Validation for user input using an output.
+
+    :param output: string
+    :return: string
+    """
     get_input = True
     while get_input is True:
         user_input = input(output)
@@ -130,6 +165,11 @@ def get_single_input(output):
 
 
 def print_delivery(d):
+    """Print the list.
+
+    :param d: list
+    :return: None
+    """
     print("----" * 10)
     for i in range(0, len(d)):
         output = "{:3} : {:10} : {:10}".format(i, d[i][0], d[i][1])
@@ -138,6 +178,13 @@ def print_delivery(d):
 
 
 def check_variable(min_, max_, output):
+    """Check that string is between max and min.
+
+    :param min_: integer
+    :param max_: integer
+    :param output: string
+    :return: string
+    """
     get_name = True
     while get_name is True:
         name = input(output)
@@ -153,16 +200,17 @@ def check_variable(min_, max_, output):
 
 
 def print_receipt(c, total_amount):
-    """Print out customer invoice
+    """Print out customer invoice.
 
     :param c: list
-    :param total_amount:
+    :param total_amount: integer
     :return: None
     """
     print("----" * 10)
     for i in range(0, len(c)):
         if c[i][2] > 0:
-            output = "You have ordered {} {} pizza/s at ${:.2f} each".format(c[i][2], c[i][0], c[i][1])
+            output = ("You have ordered {} {} pizza/s at ${:.2f} each"
+                      .format(c[i][2], c[i][0], c[i][1]))
             print(output)
     total_amount += total_calculator(c)
     output2 = "This total is ${:.2f} ".format(total_amount)
@@ -172,7 +220,7 @@ def print_receipt(c, total_amount):
 
 
 def print_with_indexes(d):
-    """ Print the contents of a list with index numbers.
+    """Print the contents of a list with index numbers.
 
     :param d: list
     :return: None
@@ -184,19 +232,20 @@ def print_with_indexes(d):
 
 
 def print_with_indexes_2(d):
-    """Print the contents of a list with index number
+    """Print the contents of a list with index number.
 
     :param d: list
     :return: None
     """
     for i in range(0, len(d)):
-        output = "{:3}: {:15}: {:6} : {:3} ".format(i, d[i][0], d[i][1], d[i][2])
+        output = "{:3}: {:15}: {:6} : {:3} ".format(
+            i, d[i][0], d[i][1], d[i][2])
         print(output)
     return None
 
 
 def total_calculator(c):
-    """ Working out the price to charge the customer
+    """Working out the price to charge the customer.
 
     :param c: list
     :return: integer
@@ -209,7 +258,7 @@ def total_calculator(c):
 
 
 def search_for_name(c, pizza_name):
-    """ Looking through a list for a name
+    """Looking through a list for a name.
 
     :param c: List
     :param pizza_name: float
@@ -219,16 +268,17 @@ def search_for_name(c, pizza_name):
         if c[i][0] == pizza_name:
             return i
     return -1
-    # needs pizza order list
-    # needs name of pizza
-    # need to loop through the order list and check if any = name
-    # return the index number
-    # if nothing found
-    # return -1
+
+# needs pizza order list
+# needs name of pizza
+# need to loop through the order list and check if any = name
+# return the index number
+# if nothing found
+# return -1
 
 
 def add_pizza(d, c, max_per_pizza, total_amount):
-    """ Adding values/updating customer order list
+    """Adding values/updating customer order list.
 
     :param d: list
     :param c: list
@@ -246,16 +296,19 @@ def add_pizza(d, c, max_per_pizza, total_amount):
         result = search_for_name(c, pizza_name)
         if result == -1:
             output = "How many of the {}/s do you want to add?     "
-            new_amount = get_user_input(1, max_per_pizza, output.format(d[choice][0]))
+            new_amount = get_user_input(
+                1, max_per_pizza, output.format(d[choice][0]))
             temp = [d[choice][0], d[choice][1], new_amount]
             c.append(temp)
             print_receipt(c, total_amount)
             return total_amount
         else:
-            message = "You already have {} of the {} in the order".format(c[result][2], pizza_name)
+            message = "You already have {} of the {} in the order"\
+                .format(c[result][2], pizza_name)
             print(message)
             available_pizza = max_per_pizza - c[result][2]
-            message = "You can order a maximum of {} more".format(available_pizza)
+            message = "You can order a maximum of {} more"\
+                .format(available_pizza)
             print(message)
             message = "How many more {} would you like?  "
             output = message.format(pizza_name)
@@ -275,10 +328,18 @@ def add_pizza(d, c, max_per_pizza, total_amount):
 
 
 def subtract_pizza(c, total_amount):
+    """Removing pizza/s from costumer list or subtracting pizza/s.
+
+    :param c: list
+    :param total_amount: integer
+    :return: None
+    """
     print_with_indexes_2(c)
-    my_index = get_user_input(0, len(c) - 1,
-                              "Please select what index number, would you like to subtract pizza from?   ")
-    sub_amount = get_user_input(0, c[my_index][2], "How many of the pizza do you want to subtract?     ")
+    output = "Please select what index number, " \
+             "would you like to subtract pizza from?   "
+    my_index = get_user_input(0, len(c) - 1, output)
+    output = "How many of the pizza do you want to subtract?     "
+    sub_amount = get_user_input(0, c[my_index][2], output)
     new_amount = c[my_index][2] - sub_amount
     c[my_index][2] = new_amount
     if new_amount == 0:
@@ -293,6 +354,13 @@ def subtract_pizza(c, total_amount):
 
 
 def get_user_input(lower, higher, output):
+    """Check if number is between lower and higher.
+
+    :param lower: integer
+    :param higher: integer
+    :param output: integer
+    :return: integer
+    """
     getting_input = True
     while getting_input is True:
         try:
@@ -301,12 +369,17 @@ def get_user_input(lower, higher, output):
             print("You have not entered an integer")
             continue
         if user_input < lower or user_input > higher:
-            print("you have not entered a number between {} and {}".format(lower, higher))
+            print("you have not entered a number "
+                  "between {} and {}".format(lower, higher))
             continue
         return user_input
 
 
 def main_loop():
+    """Running all the functions.
+
+    :return: None
+    """
     run = True
     max_per_pizza = 5
     pizza_list = [
@@ -318,7 +391,7 @@ def main_loop():
         ["Olivia", 18.5],
         ["Piccolo", 18.5],
         ["La Prima Donna", 25.5],
-        ["Formargi", 25.5],
+        ["Formaggio", 25.5],
         ["Madonna", 25.5]
     ]
     my_menu = [
@@ -346,17 +419,20 @@ def main_loop():
         elif user_choice == "m":
             print_with_indexes(pizza_list)
         elif user_choice == "a":
-            add_pizza(pizza_list, customer_list, max_per_pizza, total_amount)
+            add_pizza(pizza_list,
+                      customer_list, max_per_pizza, total_amount)
         elif user_choice == "s":
             subtract_pizza(customer_list, total_amount)
         elif user_choice == "r":
             print_receipt(customer_list, total_amount)
         elif user_choice == "d":
-            total_amount, customer_details = delivery_option(customer_details, total_amount)
+            total_amount, customer_details = delivery_option(
+                customer_details, total_amount)
         elif user_choice == "u":
             update_delivery(customer_details)
         elif user_choice == "c":
-            run, total_amount = checking_everything(customer_details, customer_list, total_amount)
+            run, total_amount = checking_everything(
+                customer_details, customer_list, total_amount)
         else:
             print("sorry your answer was not valid")
             print("----" * 10)
