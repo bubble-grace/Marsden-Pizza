@@ -3,6 +3,10 @@
 import re
 
 
+# get all lists
+# ask for input
+
+
 def checking_everything(d, c, total_amount):
     """Invoicing the customer with details.
 
@@ -37,6 +41,10 @@ def checking_everything(d, c, total_amount):
     else:
         run = True
         return run, total_amount
+
+
+# need to get input from user
+# change customer list
 
 
 def update_delivery(d):
@@ -76,8 +84,12 @@ def update_delivery(d):
         print("Sorry you have not entered 0, 1 or 2")
 
 
+# get user input
+# format user input
+
+
 def delivery_option(d, total_amount):
-    """Asking the user fro details surrounding delivery.
+    """Asking the user for details surrounding delivery.
 
     :param d: list
     :param total_amount: integer
@@ -124,6 +136,10 @@ def delivery_option(d, total_amount):
     return total_amount, d
 
 
+# phone number validation
+# search dictorinary for possible options
+
+
 def check_phone_number(output):
     """Search through list.
 
@@ -147,6 +163,10 @@ def check_phone_number(output):
             continue
 
 
+# validating yes or no
+# get user input
+
+
 def get_single_input(output):
     """Validation for user input using an output.
 
@@ -164,6 +184,9 @@ def get_single_input(output):
         return user_input
 
 
+# print delivery list
+
+
 def print_delivery(d):
     """Print the list.
 
@@ -175,6 +198,10 @@ def print_delivery(d):
         output = "{:3} : {:10} : {:10}".format(i, d[i][0], d[i][1])
         print(output)
     print("----" * 10)
+
+
+# check varible
+# used for name and adress
 
 
 def check_variable(min_, max_, output):
@@ -199,6 +226,8 @@ def check_variable(min_, max_, output):
             return name
 
 
+# prints nicely
+
 def print_receipt(c, total_amount):
     """Print out customer invoice.
 
@@ -219,6 +248,9 @@ def print_receipt(c, total_amount):
     return None
 
 
+# print 3 option list
+
+
 def print_with_indexes(d):
     """Print the contents of a list with index numbers.
 
@@ -229,6 +261,9 @@ def print_with_indexes(d):
         output = "{:3}: {:15}: {:6} ".format(i, d[i][0], d[i][1])
         print(output)
     return None
+
+
+# print 4 option list
 
 
 def print_with_indexes_2(d):
@@ -243,6 +278,8 @@ def print_with_indexes_2(d):
         print(output)
     return None
 
+# gets lists
+# multiplication for price
 
 def total_calculator(c):
     """Working out the price to charge the customer.
@@ -255,6 +292,10 @@ def total_calculator(c):
         sub = c[i][2] * c[i][1]
         total += sub
     return total
+
+
+# look through a list
+# search function
 
 
 def search_for_name(c, pizza_name):
@@ -373,6 +414,10 @@ def get_user_input(lower, higher, output):
                   "between {} and {}".format(lower, higher))
             continue
         return user_input
+
+
+# home of the code
+# has lists
 
 
 def main_loop():
