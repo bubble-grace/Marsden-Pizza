@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>Please put a title in</title>
+		<title>Planning for Marsden Pizza Project</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="Description" lang="en" content="ADD SITE DESCRIPTION">
 		<meta name="author" content="ADD AUTHOR INFORMATION">
@@ -104,7 +104,7 @@ three variables, this makes the code at the moment easier to follow. Latter I wi
      <img class="img-responsive" src="assets/img/Test_2.PNG" alt="">
     <p></p>
     <p> Above is a photo of my tests for this version, the first part of the tests went well and performed as expected. However, when I went to
-    test the adding function, this worked with the normal 0 to 2 indices. However, when I went to try to put an indices of 3, the code chrashed.
+    test the adding function, this worked with the normal 0 to 2 indices. However, when I went to try to put an indices of 3, the code crashed.
     This is an issue I would like to sort out for the next version with some validation, including an except errors part of the code.</p>
                 </div>
                 <div id="3">
@@ -129,7 +129,7 @@ However the new feature here is the addition of a print receipt function, this c
     <img class="img-responsive" src="assets/img/Test_3.PNG" alt="">
 
   <p>
-   This is all functional, to do this I added some basic validation. The user can only subtract up to the amount of pizzas they have ordered above is a photo before this code was implimented. This means there are no negative values of pizzas as this could run into issues further down the tract. Because there are now two functions that require validation, I have created a function for this, it collects the maximum and minimum number of pizzas to be added or subtracted and the message/ouput you would like the user to see.
+   This is all functional, to do this I added some basic validation. The user can only subtract up to the amount of pizzas they have ordered above is a photo before this code was implemented. This means there are no negative values of pizzas as this could run into issues further down the tract. Because there are now two functions that require validation, I have created a function for this, it collects the maximum and minimum number of pizzas to be added or subtracted and the message/output you would like the user to see.
 
 </p>
                 </div>
@@ -137,15 +137,15 @@ However the new feature here is the addition of a print receipt function, this c
 
     <hr>
 <h1>Sprint Four</h1>
-<p>The aim of this sprint is to chose the delivery option</p>
+<p>The aim of this sprint is choosing the delivery option</p>
     <img class="img-responsive" src="assets/img/sprint4_plan.JPG" alt="">
 
 <img class="img-responsive" src="assets/img/sprint_4.PNG" alt="">
 
-<p>For this version I worked on creating a delivery option that allowed the user to choose either takeaway at no extra cost or delivery at a cost of three dollars. Both these options need more information about the user including but not limited to phone number, address and name. The name and address of the user was easy to validate with string validation. The hard part was the phone number for this I had two trial options, these had feature the same and different</p>
+<p>For this version I worked on creating a delivery option that allowed the user to choose either takeaway at no extra cost or delivery at a cost of three dollars. Both these options need more information about the user including but not limited to phone number, address and name. The name and address of the user was easy to validate with string validation. The hard part was the phone number for this I had two trial options, these had featured the same and different</p>
 
 <h3> Trial 1 </h3>
-<p>This trial was very simple and involved validating the length of the phone number with a len function. This ment the phone number had to be between 8 and 12 digits long as this was the minimum and maximum length a regional phone number could be according to Google. There was a few errors when testing this code including that if the phone number started with a 0, the code would drop it, because it was looking for the simplest form of the “number”. This could lead to many problems in the future.</p>
+<p>This trial was very simple and involved validating the length of the phone number with a len function. This meant the phone number had to be between 8 and 12 digits long as this was the minimum and maximum length a regional phone number could be according to Google. There was a few errors when testing this code including that if the phone number started with a 0, the code would drop it, because it was looking for the simplest form of the “number”. This could lead to many problems in the future.</p>
 
 <h3> Trial 2</h3>
 <p>This trial was one including regex, that needed to be imported. This is shown by the import re code at the top of the page. This imports a package from python that does not need to be downloaded.
@@ -154,7 +154,7 @@ The function I wanted to run this code through was this:
 (^\([0][3]\))(\d{7}$)|(^\([0][4]\))(\d{7}$)|(^\([0][6]\))(\d{7}$)|(^\([0][7]\))(\d{7}$)|(^\([0][9]\))(\d{7}$)|(^\([0][2][1]\))(\d{6,8}$)|(^\([0][2][2]\))(\d{6,8}$)|(^\([0][2][7]\))(\d{6,8}$)|(^\([0][2][9]\))(\d{6,8}$)|([0][8][0][0])([\s])(\d{5,8}$)
 
 
-This looks very confusing however it all makes sense, to start with I wanted to work  out what type of phone numbers people could have and I ended up with this list for New Zealand.
+This looks very confusing however it all makes sense, to start with I wanted to work  out what type of phone numbers people could have, and I ended up with this list for New Zealand.
 
 <h4> Landline phone numbers with area codes </h4>
 <ul class="list-inline">
@@ -173,7 +173,7 @@ This looks very confusing however it all makes sense, to start with I wanted to 
 <li>029</li>
 </ul>
 
-<p>The final phone number I wanted to include was an 0800 number as theses as also used around NZ</p>
+<p>The final phone number I wanted to include was an 0800 number because theses as also used around NZ</p>
 
 <p> The (^\([0][2][1]\))(\d{6,8}$)|(^\([0][2][2]\))(\d{6,8}$)|(^\([0][2][7]\))(\d{6,8}$)|(^\([0][2][9]\))(\d{6,8}$)|
  part of this code is for the mobile numbers. I would like the user to enter the prefix to the number in the brackets. This allows the user to enter any prefix beginning with 02 followed by a number that is either 1,2,7 or 9. The rest of the phone number must then be between 6 and 8 digits long as this is what the length should be between. THe format should be (021)flowed by the 6-8 digit number. </p>
@@ -184,7 +184,7 @@ This looks very confusing however it all makes sense, to start with I wanted to 
  part of the code above is for the landline numbers, this requires that the prefix 0 then either 3,4,6,7 or 9 be in a bracket followed by 7 digits. </p>
 <h4>Regex Evaluation</h4>
 
-    <p> By using this code I learnt a lot about regex and how it works, which allowed me to make this code, this became a function through using a if statement with a search function that returned an error if none of these conditions were met. Regex is the search used for validation, in this case for a pattern between the phone number and a viable NZ phone number.</p>
+    <p> By using this code I learnt a lot about regex and how it works, which allowed me to make this code, this became a function through using an if statement with a search function that returned an error if none of these conditions were met. Regex is the search used for validation, in this case for a pattern between the phone number and a viable NZ phone number.</p>
     <h4>Trial Evaluation</h4>
 <p>After a lot of reach I decided that option two was  viable for the project I was doing. This is because it would accept the number for having the leading zero and provide a more in depth understanding of the code and what errors the number could have. To fully implement this from a trial basis I would need to fully explain to the user what format their answer needed to be in.</p>
 
@@ -203,13 +203,13 @@ This looks very confusing however it all makes sense, to start with I wanted to 
     <h1>Sprint 5 </h1>
                     <p>The aim for this sprint is to get all the loss ends sorted </p>
 <img class="img-responsive" src="assets/img/sprint5_plan.JPG" alt="">
-    <p> For version 5 the main goal was for the user to be able to confirm all the details including the amount of pizzas and the pickup/delivery information. For this code to work it was printing all the information collected for earlierly, however the user may not have ordered any pizzas or entered no delivery details. The code then gives an error message to the user and then returns to the main menu. </p>
+    <p> For version 5 the main goal was for the user to be able to confirm all the details including the amount of pizzas and the pickup/delivery information. For this code to work it was printing all the information collected from earlier, however the user may not have ordered any pizzas or entered no delivery details. The code then gives an error message to the user and then returns to the main menu. </p>
 
-<p> When I was testing this code everything was functional however I noticed I often was typing too fast and made mistakes in the details for the delivery which was the name, phone number and address. To solve this problem I added a function which allowed the user to change or update any of these options. </p>
+<p> When I was testing this code everything was functional however I noticed I was often typing too fast and made mistakes in the details for the delivery which was the name, phone number and address. To solve this problem I added a function which allowed the user to change or update any of these options. </p>
 
     <img class="img-responsive" src="assets/img/sprint_5.PNG" alt="">
 <p> The second part of this sprint was to clean up the code by making sure the relevant code conventions were followed and there were minimal errors. This was done through the use of the feature on pycharm. </p>
-<p>When I was cleaning up my code, I discovered another issue I wanted to fix, this was regarding ordering pizzas. Currently if the user want to order more
+<p>When I was cleaning up my code, I discovered another issue I wanted to fix, this was regarding ordering pizzas. Currently, if the user want to order more
 of a pizza they have already ordered, it lets them order up to five more. To fix this I added a function to check how many if any of the pizzas were already
 ordered then subtract this from the main pizza maximum amount. This allowed the user to enter up to 5 TOTAL pizzas instead of 5 per extra addition. </p>
 
@@ -220,7 +220,7 @@ ordered then subtract this from the main pizza maximum amount. This allowed the 
                 </video>
 <p></p>
                 <p>From this video I discovered one last problem, if the user has subtracted pizzas even if it is at 0 the customer list
-                keeps the variable. Hence I have added a small piece of code that if the pizzas on the list equals zero the code will
+                keeps the variable. Hence, I have added a small piece of code that if the pizzas on the list equals zero the code will
                 delete the order from the costumers list. </p>
                 <div id="6">
 
@@ -229,13 +229,16 @@ ordered then subtract this from the main pizza maximum amount. This allowed the 
 
 <p> Usability is how easy the program is to use, this is done by clear informative user feedback or even fixes the error without the user knowing to make the experience more enjoyable. Uses consistent messaging and navigation system, is another part of usability. </p>
 
-<p>I believe that my code is easily usable, this is because the questions and feedback were polite and well-meant. I tried to include please and thank you, and other supportive messages. This is shown in my validation and myl message includes supportive phrases to keep the user updated. </p>
+<p>I believe that my code is easily usable, this is because the questions and feedback were polite and well-meant. I tried to include please and thank you, and other supportive messages. The user entry is also validated, if the user makes an error, the program will identify it and give feedback to the user with an option to remedy the issue. </p>
+
+<img class="img-responsive" src="assets/img/usability.PNG" alt="">
+ <p></p>
 
 <h3>Functionality</h3>
 
-<p> Functionality is that the program works properly this includes not crashing despite the users interesting inputs. It also needs to meet the users requirements of being able to add and subtract pizzas. </p>
+<p> Functionality is that the program works properly this includes not crashing despite the users interesting inputs. It also needs to meet the users requirements of being able to add and subtract pizzas, add delivery/pick up option, confirming order, closing the order and starting a new order. </p>
 
-<p>In order to test the functionality of my code, I got others to test my code as seen in the video above. Despite the users changing it’s mind and making sessions that might not always be what was expected. This all worked without crashing, only calmy displaying the user with an error message that was targeted and helpful. </p>
+<p>In order to test the functionality of my code, I got others to test my code as seen in the video above. Despite the users changing it’s mind and making sessions that might not always be what was expected. This all worked without crashing, only calmy displaying the user with an error message that was targeted and helpful. This was because I systematically tested after each sprint.</p>
 
 <h3>Sustainability and Future Proofing</h3>
 
@@ -245,30 +248,38 @@ ordered then subtract this from the main pizza maximum amount. This allowed the 
 
 <p>Function based build which means  each feature runs from a function. Any new feature could be created with a new function and a new menu option to complete the code. </p>
 
-<p>This was a big thing for me as this helped me to make decisions regarding lists and how to use them. In the first 5 sprints I only had a pizza list of three pizzas, this was because it was easier to manage in the early stages. However for the final version I changed this to a list of 10 pizzas for Marsden Pizza’s menu. This showed the ability for the code to be changed  if needed, this is a great example of sustainability, and future proofing methods. The pizza list was not the only list I used, we also had delivery and customer order lists, these stored data, to then be used again and again. Another sustainability feature of this code is the functions, these validations functions are used multiple times one is for getting a string and the other is for getting a number. The only function used less than three times is getting the phone number because this is specialist code only used twice. If I had more time I would work out a way of integrating the phone number validation into the getting number function. </p>
+<p>This was a big thing for me as this helped me to make decisions regarding lists and how to use them. In the first 5 sprints I only had a pizza list of three pizzas, this was because it was easier to manage in the early stages. However, for the final version I changed this to a list of 10 pizzas for Marsden Pizza’s menu. This showed the ability for the code to be changed  if needed, this is a great example of sustainability, and future proofing methods. The pizza list was not the only list I used, we also had delivery and customer order lists, these stored data, to then be used again and again. Another sustainability feature of this code is the functions, these validations functions are used multiple times one is for getting a string and the other is for getting a number. The only function used less than three times is getting the phone number because this is specialist code only used twice. If I had more time I would work out a way of integrating the phone number validation into the getting number function. </p>
 
 
 
 <h3>What have I learnt from this planning process?</h3>
 
-<p>I have learnt about structuring the planning into manageable chunks, this made hard ideas much simpler and easier to follow. Each Sprint took about a week and focused on one or two main ideas. This started from the most basic code that could be needed, and added a new function that I discovered I could need.<p/>
+<p>I have learnt about structuring the planning into manageable chunks, this made hard ideas much simpler and easier to follow. Each Sprint took about a week and focused on one or two main ideas. This started from the most basic code that could be needed, and added a new function that I discovered I could need.</p>
 
 <p>These Sprints were very achievable and allowed me to feel a sense of accomplishment on completing each one. </p>
 
 <h3>GitHub </h3>
 
-<p>I used Github as a control center for all my code and sprints. The dashboard helped me to structure and keep track of my ideas. With the doing, to do and done column for each sprint. This was also where I stored the project backlog, an ever updating file with what was happening and what had the highest priority and what was next in the big scheme. </p>
+<p>I used GitHub as a control center for all my code and sprints. The dashboard helped me to structure and keep track of my ideas. With the doing, to do and done column for each sprint. This was also where I stored the project backlog, an ever updating file with what was happening and what had the highest priority and what was next in the big scheme. </p>
 
-<p>I would also push all my code to Github, this allowed me to have only one version of the code on my computer, with the other sprint codes being stored in github. This also records the date and time of each sprint, with relevant comments from myself. As seen below</p>
+<p>I would also push all my code to GitHub, this allowed me to have only one version of the code on my computer, with the other sprint codes being stored in GitHub. This also records the date and time of each sprint, with relevant comments from myself. As seen below</p>
 
+<img class="img-responsive" src="assets/img/grace_gits.jpg" alt="">
+<p></p>
 
 <h3>Decision Making</h3>
 
-<p>In sprint 4 I had to make a large decision regarding validation and the phone number. To make this decision, I used a trial that clearly showed me which option was best and I learnt more about python and regex.</p>
+<p>In sprint 4 I had to make a large decision regarding validation and the phone number. To make this decision, I used a trial that clearly showed me which option was best, and I learnt more about python and regex.</p>
 
 
 
-<img class="img-responsive" src="assets/img/commits_dates.PNG" alt="">
+
+                    <h3>Project Backlog</h3>
+
+<p>Project backlog was my hub for all the ideas and things that needed to be done. These were big projects that would become sprints. The project backlog was also where ideas were placed in priority order. This was a document that changes regularly to adapt to the newest high priority item. </p>
+
+<img class="img-responsive" src="assets/img/backlog_2.PNG" alt="">
+
  <hr>
                 </div>
 

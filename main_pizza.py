@@ -15,33 +15,38 @@ def checking_everything(d, c, total_amount):
     :param total_amount:
     :return: boolean, integer
     """
-    print_delivery(d)
-    for i in range(0, len(c)):
-        if c[i][2] == 0:
-            print("Sorry you have not ordered any pizzas")
-            run = True
-            return run, total_amount
-    print_receipt(c, total_amount)
-    print("----" * 10)
-    output = "Please enter yes if the details" \
-             " are correct and no if they are not---->"
-    yn = get_single_input(output)
-    if yn == "yes":
-        print("Thank you all your details are sorted")
-        get = get_single_input("Would you like to start another order?")
-        if get == "yes":
-            c.clear()
-            d.clear()
-            total_amount = 0
-            run = True
-            return run, total_amount
-        else:
-            run = False
-            return run, total_amount
-    else:
+
+    if len(c) == 0:
+        print("Sorry you have not ordered any pizzas")
         run = True
         return run, total_amount
-
+    elif len(d) == 0:
+        print("You have not entered details "
+              "for pick up/delivery")
+        run = True
+        return run, total_amount
+    else:
+        print_delivery(d)
+        print("----" * 10)
+        print_receipt(c, total_amount)
+        print("----" * 10)
+        output = "Please enter yes if the details" \
+                 " are correct and no if they are not---->"
+        yn = get_single_input(output)
+        if yn == "yes":
+            print("Thank you all your details are sorted")
+            get = get_single_input("Would you like to start another order?")
+            if get == "yes":
+                c.clear()
+                d.clear()
+                total_amount = 0
+                run = True
+                return run, total_amount
+            else:
+                run = False
+                return run, total_amount
+        else:
+            return None
 
 # need to get input from user
 # change customer list
@@ -51,37 +56,45 @@ def update_delivery(d):
     """Change delivery information.
 
     :param d: list
-    :return: None
+    :return: boolean
     """
-    print_delivery(d)
-    output = "Chose index number your would like to change ? "
-    my_index = get_user_input(0, 2, output)
-    if my_index == 0:
-        output2 = "Where would you like your pizza/s delivered to?     "
-        new_address = check_variable(6, 50, output2)
-        old_address = d[my_index][1]
-        d[my_index][1] = new_address
-        print("The name {} has been changed to {}"
-              .format(old_address, new_address))
-        print_with_indexes(d)
-    elif my_index == 1:
-        new_name = check_variable(2, 25, "Please enter your name:     ")
-        old_name = d[my_index][1]
-        d[my_index][1] = new_name
-        print("The name {} has been changed to {}".format(old_name, new_name))
-        print_delivery(d)
-    elif my_index == 2:
-        output = "What is your phone number? Please format " \
-                 "(021)035689 with the prefix or area code in the ()"
-        new_number = check_phone_number(output)
-        old_number = d[my_index][1]
-        d[my_index][1] = new_number
-        print("The name {} has been changed to {}"
-              .format(old_number, new_number))
-        print_delivery(d)
-
+    if len(d) == 0:
+        print("You have not entered details for pick up/delivery")
+        run = True
+        return run
     else:
-        print("Sorry you have not entered 0, 1 or 2")
+        print_delivery(d)
+        output = "Chose index number your would like to change ? "
+        my_index = get_user_input(0, 2, output)
+        if my_index == 0:
+            output2 = "Where would you like your pizza/s delivered to?     "
+            new_address = check_variable(6, 50, output2)
+            old_address = d[my_index][1]
+            d[my_index][1] = new_address
+            print("The name {} has been changed to {}"
+                  .format(old_address, new_address))
+            print_with_indexes(d)
+            return None
+        elif my_index == 1:
+            new_name = check_variable(2, 25, "Please enter your name:     ")
+            old_name = d[my_index][1]
+            d[my_index][1] = new_name
+            print("The name {} has been changed to {}".format(old_name, new_name))
+            print_delivery(d)
+            return None
+        elif my_index == 2:
+            output = "What is your phone number? Please format " \
+                     "(021)035689 with the prefix or area code in the ()"
+            new_number = check_phone_number(output)
+            old_number = d[my_index][1]
+            d[my_index][1] = new_number
+            print("The name {} has been changed to {}"
+                  .format(old_number, new_number))
+            print_delivery(d)
+            return None
+        else:
+            print("Sorry you have not entered 0, 1 or 2")
+            return None
 
 
 # get user input
@@ -137,7 +150,7 @@ def delivery_option(d, total_amount):
 
 
 # phone number validation
-# search dictorinary for possible options
+# search dictionary for possible options
 
 
 def check_phone_number(output):
@@ -176,7 +189,6 @@ def get_single_input(output):
     get_input = True
     while get_input is True:
         user_input = input(output)
-        print(user_input)
 
         if user_input not in ['yes', 'no']:
             print("You have not entered yes or no try again")
@@ -200,8 +212,8 @@ def print_delivery(d):
     print("----" * 10)
 
 
-# check varible
-# used for name and adress
+# check variable
+# used for name and address
 
 
 def check_variable(min_, max_, output):
@@ -280,6 +292,7 @@ def print_with_indexes_2(d):
 
 # gets lists
 # multiplication for price
+
 
 def total_calculator(c):
     """Working out the price to charge the customer.
@@ -474,10 +487,9 @@ def main_loop():
             total_amount, customer_details = delivery_option(
                 customer_details, total_amount)
         elif user_choice == "u":
-            update_delivery(customer_details)
+            run = update_delivery(customer_details)
         elif user_choice == "c":
-            run, total_amount = checking_everything(
-                customer_details, customer_list, total_amount)
+            run, total_amount = checking_everything(customer_details, customer_list, total_amount)
         else:
             print("sorry your answer was not valid")
             print("----" * 10)
