@@ -74,14 +74,16 @@ def update_delivery(d):
             print("The name {} has been changed to {}"
                   .format(old_address, new_address))
             print_with_indexes(d)
-            return None
+            run = True
+            return run
         elif my_index == 1:
             new_name = check_variable(2, 25, "Please enter your name:     ")
             old_name = d[my_index][1]
             d[my_index][1] = new_name
             print("The name {} has been changed to {}".format(old_name, new_name))
             print_delivery(d)
-            return None
+            run = True
+            return run
         elif my_index == 2:
             output = "What is your phone number? Please format " \
                      "(021)035689 with the prefix or area code in the ()"
@@ -91,10 +93,12 @@ def update_delivery(d):
             print("The name {} has been changed to {}"
                   .format(old_number, new_number))
             print_delivery(d)
-            return None
+            run = True
+            return run
         else:
             print("Sorry you have not entered 0, 1 or 2")
-            return None
+            run = True
+            return run
 
 
 # get user input
