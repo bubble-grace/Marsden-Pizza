@@ -32,7 +32,8 @@
 					<li><a href="#3">Sprint 3</a></li>
                     <li><a href="#4">Sprint 4</a></li>
 					<li><a href="#5">Sprint 5</a></li>
-                    <li><a href="#5">Relevant Implications</a></li>
+                    <li><a href="#6">Sprint 6</a></li>
+                    <li><a href="#7">Relevant Implications</a></li>
 				</ul>
 			</div>
 			<div class="content">
@@ -67,16 +68,20 @@ three variables, one for price, another for name and the third for amount of piz
 a helpful message indicating this. The review option shows the list formatted for easier use. The list here only has
 three variables, this makes the code at the moment easier to follow. Latter I will expand this lists to 10 options.  </p>
 
-	<p>This version is currently functional and works just as expected with the input you would expect, the validation despite being smaller works well
-	and means the code will not automatically crash. The plan for the next version is to add an amount to the pizzas,
-	to do this we need to know the indices. </p>
+                <h2>Sprint Review and Testing</h2>
+                <img class="img-responsive" src="assets/img/Test_1.PNG" alt="">
+                <img class="img-responsive" src="assets/img/lowercase.PNG" alt="">
+
+	<p>This version is currently functional and works just as expected with the input you would expect. The sprint 1 is fine and does not have too many issues.
+        However, there is an upper/lower case situation because it only allows the lower case option, if you eneter upper case as seen above the code will not understand
+        the input . Easy fix with .lower for next version. </p>
     <p></p>
 
-    <img class="img-responsive" src="assets/img/Test_1.PNG" alt="">
-    <p> Above is a photo of my tests </p>
+
 
 
                 <div id="2">
+                    <h1>Sprint Two</h1>
 
 <h2> Sprint Two Plan </h2>
                     <p>My aim for this sprint is to add pizzas to the costumer order</p>
@@ -93,8 +98,7 @@ three variables, this makes the code at the moment easier to follow. Latter I wi
 </p>
 	<p>
 	 This is all functional, to do this I added some basic validation. The company asked that there would be a max of pizzas
-	 per type. If they return more than 5 pizzas the program sends an error message and doesn't add the amount. The next
- level with this validation is to add a different error message if the user enters a string instead of an integer.
+	 per type. If they return more than 5 pizzas the program sends an error message and doesn't add the amount.
 
  </p>
     <p></p>
@@ -102,23 +106,25 @@ three variables, this makes the code at the moment easier to follow. Latter I wi
     <p></p>
 
      <img class="img-responsive" src="assets/img/Test_2.PNG" alt="">
+                    <img class="img-responsive" src="assets/img/sprint2_errors_letters.PNG" alt="">
     <p></p>
     <p> Above is a photo of my tests for this version, the first part of the tests went well and performed as expected. However, when I went to
     test the adding function, this worked with the normal 0 to 2 indices. However, when I went to try to put an indices of 3, the code crashed.
     This is an issue I would like to sort out for the next version with some validation, including an except errors part of the code.</p>
+
+                    <p>Another major error for this version is that if the user enters a blank space or a letter instead of
+                    a number for the index, the code crashes. This is because the code requires and integer, if it does not receive an integer
+                    it crashes. This is a problem because many people will interpret the "please enter an index number", could be asking for an integer or the
+                    number in words for example two. I also have to account for a user accidentally entering a blank space as we have all done this before.
+                    This can be fixed by validation which I will mention in a later version. </p>
                 </div>
                 <div id="3">
-    <h2> Sprint Three </h2>
-
-                    <p>The aim of this sprint is to have a functioning subtracting pizza option as well as being able to see a receipt </p>
+    <h1> Sprint Three </h1>
+<h2>Sprint three planning and description</h2>
+                    <p>The aim of this sprint is to have a functioning subtracting pizza option as well as being able to see a receipt (another function) </p>
 <img class="img-responsive" src="assets/img/sprint3_plan.JPG" alt="">
                     <img class="img-responsive" src="assets/img/sprint_3.PNG" alt="">
-
-
-<h2>Photos of the working code</h2>
-				<p></p>
-<h2>Reflection</h2>
- <p>In this version you can now subtract pizzas, this allows the user to be interactive with the system. To subtract pizzas you need to know the index number, this is done through a simple code that gets referenced multiple times. This is very similar to the code for the addition of pizzas.
+                     <p>In this version you can now subtract pizzas, this allows the user to be interactive with the system. To subtract pizzas you need to know the index number, this is done through a simple code that gets referenced multiple times. This is very similar to the code for the addition of pizzas.
 </p>
 <p>
 However the new feature here is the addition of a print receipt function, this collects the list of the users order, this being the amount and type of pizzas ordered. This then goes to the calculator where the total is calculated. This is all printed in an easy to follow “receipt” format.
@@ -126,12 +132,29 @@ However the new feature here is the addition of a print receipt function, this c
 </p>
 
 
+<h2>Sprint Review with Testing</h2>
+				<p></p>
+
+
     <img class="img-responsive" src="assets/img/Test_3.PNG" alt="">
+                    <img class="img-responsive" src="assets/img/subtract.png" alt="">
+
 
   <p>
-   This is all functional, to do this I added some basic validation. The user can only subtract up to the amount of pizzas they have ordered above is a photo before this code was implemented. This means there are no negative values of pizzas as this could run into issues further down the tract. Because there are now two functions that require validation, I have created a function for this, it collects the maximum and minimum number of pizzas to be added or subtracted and the message/output you would like the user to see.
-
+   This is all functional with the users expected input, to do this I added some basic validation from the previous version, to only allows an index on the list. This is though validation
+      it has a value error function as well this accepts that the input might not always be an integer, this then prints out please enter and integer and gives
+      the user a chance to fixe their mistakes. This also has a maximum and minim section, the minimum is set at 0 and maximum is set at 2, if the user enters a number
+      above 2 the error message says sorry your number is above 2 please try again. The same idea applies for the minimum, the code will keep trying until the user
+      enters an input that is expected.
 </p>
+                    <p>However when the user subtracts pizza/s without ordering any pizza/s the code allows it. This means the user can have negative pizza/s
+                    this then passes down to te receipt function which prints out a negative value. As a user this would be very confusing. This can be fixed
+                    not be validation but by user separate lists. This idea is that there is the menu list with all the pizza/s, and then there is also customer list
+                        this list would only have the ordered details. Then the subtraction could only be for the customer list.
+                    </p>
+
+
+
                 </div>
 <div id="4">
 
@@ -188,7 +211,7 @@ This looks very confusing however it all makes sense, to start with I wanted to 
     <h4>Trial Evaluation</h4>
 <p>After a lot of reach I decided that option two was  viable for the project I was doing. This is because it would accept the number for having the leading zero and provide a more in depth understanding of the code and what errors the number could have. To fully implement this from a trial basis I would need to fully explain to the user what format their answer needed to be in.</p>
 
-<h4>Photo of my test</h4>
+<h2>Sprint Review with Testing</h2>
 
 
     <img class="img-responsive" src="assets/img/test_4.PNG" alt="">
@@ -199,20 +222,67 @@ This looks very confusing however it all makes sense, to start with I wanted to 
 <hr>
 </div>
                 <div id="5">
+                    <h1>Sprint 5 </h1>
+                    <p>The aim for this sprint is to make function for the validation to be called multiple times  </p>
+                    <img class="img-responsive" src="assets/img/sprint5_plan.JPG" alt="">
+                    <img class="img-responsive" src="assets/img/sprint_5" alt="">
+<p></p>
+<h4>Integer validation </h4>
+<li>Get the number</li>
+<li>Have a max and min </li>
+<li>Except value error (that there could be something other than an integer)</li>
+<li>Return the integer </li>
+<p></p>
+<h4>String validation</h4>
+<li>Get string </li>
+<li>Have a max and min length </li>
+<li>Have different message if the word/s are too long or short </li>
+<li>Except integers </li>
+<li>Make word/s a title (first letter capitalised)</li>
+<p></p>
+<p>The good thing about this validation is that it can be reused multiple times, because the max and min are collected through the function where the validation is called. This allows the max and min to be different depending on the situation. </P>
+<p></p>
+<h4>Phone number validation </h4>
+<li>Get the number </li>
+<li>Check if in format </li>
+<li>The format is all available nz phone numbers (that is the demographic)</li>
+<li>If not print dorry and try again </li>
+<li>If right return number </li>
+<p></p>
+<h4>Yes/no validation </h4>
+<li>Gets yes or no </li>
+<li>Make sure all in lowercase </li>
+<li>Check if it is yes or no </li>
+<li>If not yes or no, print error message and give another chance </li>
+<p></p>
+<p>The yes and no validation and the phone number validation, is more specific only used 2 times each. This is done in a similar manner, there is a criteria the input must be. If not the user will be told and get another chance to enter the right input. </p>
+<p></p>
+                    <h2>Sprint Review with Testing</h2>
+                    <img class="img-responsive" src="assets/img/validation_test.PNG" alt="">
+                    <p></p>
+<p>As you can see above the validation works as expected with my example scenarios, these variables can now be changed easily for usability for example if the name length was to shorten the coder would only need to change the maximum length where the function was called instead of changing the validation. These 4 validation forms cover most of the input the user is asked to enter, a number, a word, yes or no and a phone number. The reason why the phone number could not come under the number validation was because I wanted to input to be a New Zealand and this could have a special ico for example +.
+</p>
 
-    <h1>Sprint 5 </h1>
-                    <p>The aim for this sprint is to get all the loss ends sorted </p>
-<img class="img-responsive" src="assets/img/sprint5_plan.JPG" alt="">
-    <p> For version 5 the main goal was for the user to be able to confirm all the details including the amount of pizzas and the pickup/delivery information. For this code to work it was printing all the information collected from earlier, however the user may not have ordered any pizzas or entered no delivery details. The code then gives an error message to the user and then returns to the main menu. </p>
+
+                </div>
+                <div id="6">
+
+    <h1>Sprint 6 </h1>
+                    <p>The aim for this sprint is to make a confirmation and update order functions</p>
+<img class="img-responsive" src="assets/img/sprint6_plan.JPG" alt="">
+                        <img class="img-responsive" src="assets/img/sprint_6.PNG" alt="">
+    <p> For sprint 6 the main goal was for the user to be able to confirm all the details including the amount of pizzas and the pickup/delivery information. For this code to work it was printing all the information collected from earlier, however the user may not have ordered any pizzas or entered no delivery details. The code then gives an error message to the user and then returns to the main menu. </p>
 
 <p> When I was testing this code everything was functional however I noticed I was often typing too fast and made mistakes in the details for the delivery which was the name, phone number and address. To solve this problem I added a function which allowed the user to change or update any of these options. </p>
 
-    <img class="img-responsive" src="assets/img/sprint_5.PNG" alt="">
 <p> The second part of this sprint was to clean up the code by making sure the relevant code conventions were followed and there were minimal errors. This was done through the use of the feature on pycharm. </p>
-<p>When I was cleaning up my code, I discovered another issue I wanted to fix, this was regarding ordering pizzas. Currently, if the user want to order more
+<p></p>
+                 <h2> Sprint Review with testing </h2>
+                    <p>When I was cleaning up my code, I discovered another issue I wanted to fix, this was regarding ordering pizzas. Currently, if the user want to order more
 of a pizza they have already ordered, it lets them order up to five more. To fix this I added a function to check how many if any of the pizzas were already
 ordered then subtract this from the main pizza maximum amount. This allowed the user to enter up to 5 TOTAL pizzas instead of 5 per extra addition. </p>
 
+<p>  </p>
 
 </div>
                 <video width="1060" height="720" controls>
@@ -222,7 +292,7 @@ ordered then subtract this from the main pizza maximum amount. This allowed the 
                 <p>From this video I discovered one last problem, if the user has subtracted pizzas even if it is at 0 the customer list
                 keeps the variable. Hence, I have added a small piece of code that if the pizzas on the list equals zero the code will
                 delete the order from the costumers list. </p>
-                <div id="6">
+                <div id="7">
 
     <h1> Relevant Implications Summary</h1>
 <h3>Usability </h3>
