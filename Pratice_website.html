@@ -226,7 +226,7 @@ This looks very confusing however it all makes sense, to start with I wanted to 
                     <h1>Sprint 5 </h1>
                     <p>The aim for this sprint is to make function for the validation to be called multiple times  </p>
                     <img class="img-responsive" src="assets/img/sprint5_plan.JPG" alt="">
-                    <img class="img-responsive" src="assets/img/sprint_5" alt="">
+                    <img class="img-responsive" src="assets/img/sprint_5.PNG" alt="">
 <p></p>
 <h4>Integer validation </h4>
 <li>Get the number</li>
@@ -293,6 +293,13 @@ ordered then subtract this from the main pizza maximum amount. This allowed the 
                 <p>From this video I discovered one last problem, if the user has subtracted pizzas even if it is at 0 the customer list
                 keeps the variable. Hence, I have added a small piece of code that if the pizzas on the list equals zero the code will
                 delete the order from the costumers list. </p>
+
+                <img class="img-responsive" src="assets/img/confirm_issue.PNG" alt="">
+<p></p>
+                <p>I found another error during testing, this is seen above because I returned none. The code required the run and total amount
+                and the none code did ot fix that. The fix this I made it return the run and the total amount function to keep the loop going.
+                The total amount is equal to 0 or 3 at this point and the run is equal to True to give the user an opportunity to add/subtract pizzas and to
+                update the delivery order. </p>
                 <div id="7">
 
     <h1> Relevant Implications Summary</h1>

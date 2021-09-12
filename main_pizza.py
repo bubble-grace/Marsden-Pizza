@@ -48,7 +48,8 @@ def checking_everything(d, c, total_amount):
                 run = False
                 return run, total_amount
         else:
-            return None
+            run = True
+            return run, total_amount
 
 # need to get input from user
 # change customer list
@@ -120,55 +121,59 @@ def delivery_option(d, total_amount):
     :param total_amount: integer
     :return: None
     """
-    output = """
-    1: Delivery, this comes with an extra cost of $3
-    2: Pick up, you come in store to pick up at no extra cost
-
-    """
-    print(output)
-    # get 1 or 2
-    choice = get_user_input(1, 2, "Which option would you like?  ")
-    if choice == 1:
-        output = "Where would you like your pizza/s delivered to?     "
-        # get address
-        address = check_variable(6, 50, output)
-        # get name
-        name = check_variable(2, 25, "Please enter your name:     ")
-        # get phone number
-        output = "What is your phone number? Please format (021)035689 " \
-                 "with the prefix or area code in the ()  "
-        number = check_phone_number(output)
-        # confirmation print out
-        print("Your pizza/s will be delivered to {}".format(address))
-        print("Your pizza/s are now under the name {}".format(name))
-        print("The phone number the pizza/s is "
-              "associated with will be {}".format(number))
-        # add to list
-        d.append(["name", name])
-        d.append(["phone number", number])
-        d.append(["address", address])
-        print("----" * 10)
-        total_amount += 3
+    if len(d) > 1:
+        print("You have already entered details for pick up/delivery")
         return total_amount, d
-    elif choice == 2:
-        print("You have chosen pickup ")
-        # get name
-        name = check_variable(2, 25, "Please enter your name:     ")
-        # get phone number
-        output = "Please format (021)035689 with " \
-                 "the prefix or area code in the ()  "
+    else:
+        output = """
+        1: Delivery, this comes with an extra cost of $3
+        2: Pick up, you come in store to pick up at no extra cost
+    
+        """
         print(output)
-        number = check_phone_number("What is your phone number?")
-        # confirmation
-        print("Your pizza/s are now "
-              "under the name {}".format(name))
-        print("The phone number the pizza/s is "
-              "associated with will be {}".format(number))
-        # add to list
-        d.append(["name", name])
-        d.append(["phone number", number])
-        print("----" * 10)
-    return total_amount, d
+        # get 1 or 2
+        choice = get_user_input(1, 2, "Which option would you like?  ")
+        if choice == 1:
+            output = "Where would you like your pizza/s delivered to?     "
+            # get address
+            address = check_variable(6, 50, output)
+            # get name
+            name = check_variable(2, 25, "Please enter your name:     ")
+            # get phone number
+            output = "What is your phone number? Please format (021)035689 " \
+                     "with the prefix or area code in the ()  "
+            number = check_phone_number(output)
+            # confirmation print out
+            print("Your pizza/s will be delivered to {}".format(address))
+            print("Your pizza/s are now under the name {}".format(name))
+            print("The phone number the pizza/s is "
+                  "associated with will be {}".format(number))
+            # add to list
+            d.append(["name", name])
+            d.append(["phone number", number])
+            d.append(["address", address])
+            print("----" * 10)
+            total_amount += 3
+            return total_amount, d
+        elif choice == 2:
+            print("You have chosen pickup ")
+            # get name
+            name = check_variable(2, 25, "Please enter your name:     ")
+            # get phone number
+            output = "Please format (021)035689 with " \
+                     "the prefix or area code in the ()  "
+            print(output)
+            number = check_phone_number("What is your phone number?")
+            # confirmation
+            print("Your pizza/s are now "
+                  "under the name {}".format(name))
+            print("The phone number the pizza/s is "
+                  "associated with will be {}".format(number))
+            # add to list
+            d.append(["name", name])
+            d.append(["phone number", number])
+            print("----" * 10)
+        return total_amount, d
 
 
 # phone number validation
@@ -527,7 +532,7 @@ def main_loop():
             output = "{} : {}".format(my_menu[i][0], my_menu[i][1])
             print(output)
 
-        user_choice = input("please enter your option here: ->  ")
+        user_choice = input("please enter your option here: ->  ").lower()
         if user_choice == "q":
             # response to the phone operator wanting to leave
             print("Loop has stopped, Thank you")
@@ -559,6 +564,7 @@ def main_loop():
             # basic validation
             print("sorry your answer was not valid")
             print("----" * 10)
+
 
 # to call all functions and start the code
 main_loop()
