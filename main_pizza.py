@@ -160,7 +160,7 @@ def delivery_option(d, total_amount):
             # get name
             name = check_variable(2, 25, "Please enter your name:     ")
             # get phone number
-            output = "Please format (021)035689 with " \
+            output = "Please format your phone number with " \
                      "the prefix or area code in the ()  "
             print(output)
             number = check_phone_number("What is your phone number?")
