@@ -439,21 +439,24 @@ def subtract_pizza(c, total_amount):
     :param total_amount: integer
     :return: None
     """
-    print_with_indexes_2(c)
-    # get input for index number
-    output = "Please select what index number, " \
-             "would you like to subtract pizza from?   "
-    my_index = get_user_input(0, len(c) - 1, output)
-    output = "How many of the pizza do you want to subtract?     "
-    # make sure the pizzas can not become negative
-    sub_amount = get_user_input(0, c[my_index][2], output)
-    new_amount = c[my_index][2] - sub_amount
-    c[my_index][2] = new_amount
-    # if this removes the type of pizzas altogether
-    if new_amount == 0:
-        c.pop(my_index)
-    print_receipt(c, total_amount)
-    return None
+    if len(c) == 0:
+        print("Sorry you have not ordered any pizzas")
+    else:
+        print_with_indexes_2(c)
+        # get input for index number
+        output = "Please select what index number, " \
+                 "would you like to subtract pizza from?   "
+        my_index = get_user_input(0, len(c) - 1, output)
+        output = "How many of the pizza do you want to subtract?     "
+        # make sure the pizzas can not become negative
+        sub_amount = get_user_input(0, c[my_index][2], output)
+        new_amount = c[my_index][2] - sub_amount
+        c[my_index][2] = new_amount
+        # if this removes the type of pizzas altogether
+        if new_amount == 0:
+            c.pop(my_index)
+        print_receipt(c, total_amount)
+        return None
 
 
 # takes two numbers and one string
